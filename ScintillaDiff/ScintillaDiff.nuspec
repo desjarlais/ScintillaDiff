@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/VPKSoft/ScintillaDiff</projectUrl>
+    <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial NuGet release.</releaseNotes>
+    <copyright>Copyright © 2019 VPKSoft</copyright>
+    <tags>wrapper winforms scintilla diff</tags>
+    <license type="expression">MIT</license>
+  </metadata>
+</package>
