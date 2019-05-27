@@ -52,16 +52,23 @@ namespace TestApp
                     scintillaDiffControl.TextRight = File.ReadAllText(odAnyFile.FileName);
                 }
             }
+
+            btJumpBackwards.Enabled = scintillaDiffControl.CanGoPrevious;
+            btJumpForwards.Enabled = scintillaDiffControl.CanGoNext;
         }
 
         private void BtJumpBackwards_Click(object sender, EventArgs e)
         {
             scintillaDiffControl.Previous();
+            btJumpBackwards.Enabled = scintillaDiffControl.CanGoPrevious;
+            btJumpForwards.Enabled = scintillaDiffControl.CanGoNext;
         }
 
         private void BtJumpForwards_Click(object sender, EventArgs e)
         {
             scintillaDiffControl.Next();
+            btJumpBackwards.Enabled = scintillaDiffControl.CanGoPrevious;
+            btJumpForwards.Enabled = scintillaDiffControl.CanGoNext;
         }
 
         private void BtSingleView_Click(object sender, EventArgs e)

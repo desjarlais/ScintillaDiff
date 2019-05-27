@@ -125,6 +125,18 @@ namespace ScintillaDiff
         public Scintilla LeftScintilla => scintillaOne;
 
         /// <summary>
+        /// Gets the value indicating whether a navigation to the previous difference is possible. (<seealso cref="Previous"/>).
+        /// </summary>
+        [Browsable(false)]
+        public bool CanGoPrevious => diffIndex > 0 && DiffLocations.Count > 0;
+
+        /// <summary>
+        /// Gets the value indicating whether a navigation to the next difference is possible. (<seealso cref="Next"/>).
+        /// </summary>
+        [Browsable(false)]
+        public bool CanGoNext => diffIndex + 1 < DiffLocations.Count;
+
+        /// <summary>
         /// Gets the right <see cref="Scintilla"/> control.
         /// </summary>
         [Browsable(false)]
@@ -844,7 +856,7 @@ namespace ScintillaDiff
                 }
                 
                 // reset the index of the next difference..
-                diffIndex = 0;
+                diffIndex = -1;
 
                 // raise the ExternalStyleNeeded event if it's subscribed..
                 ExternalStyleNeeded?.Invoke(this, new StyleRefreshEventArgs {Scintilla = LeftScintilla});
@@ -957,7 +969,7 @@ namespace ScintillaDiff
                 }
 
                 // reset the index of the next difference..
-                diffIndex = 0;
+                diffIndex = -1;
 
                 // raise the ExternalStyleNeeded event if it's subscribed for both of the Scintilla controls..
                 ExternalStyleNeeded?.Invoke(this, new StyleRefreshEventArgs {Scintilla = LeftScintilla});
@@ -1073,7 +1085,7 @@ namespace ScintillaDiff
                 scintillaTwo.ScrollCaret();
             }
 
-            if (backwards && lineIndex == 0 || 
+            if (backwards && lineIndex == -1 || 
                 !backwards && lineIndex + 1 >= DiffLocations.Count)
             {
                 return false;
@@ -1121,12 +1133,8 @@ namespace ScintillaDiff
                 return false;
             }
 
-            if (JumpToLine(diffIndex, false))
-            {
-                diffIndex++;
-            }
-
-            return true;
+            diffIndex++;
+            return JumpToLine(diffIndex, false);
         }
 
         /// <summary>
@@ -1140,12 +1148,9 @@ namespace ScintillaDiff
                 return false;
             }
 
-            if (JumpToLine(diffIndex, true))
-            {
-                diffIndex--;
-            }
+            diffIndex--;
 
-            return true;
+            return JumpToLine(diffIndex, true);
         }
         #endregion
     }
