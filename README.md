@@ -6,7 +6,7 @@ A class library for comparing two text files with the ScintillaNET control.
 * Customizable indicator colors
 * A List and a side-by-side views
 * Access to the underlying Scintilla controls for styling, etc...
-* **NOTE** This is a Windows Forms control
+* **NOTE:** This is a Windows Forms control
 
 ## Used libraries
 * [DiffPlex](https://github.com/mmanela/diffplex)
