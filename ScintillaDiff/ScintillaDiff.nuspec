@@ -10,7 +10,7 @@
     <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added CanGoPrevious and CanGoNext properties.</releaseNotes>
+    <releaseNotes>Made the side-by-side view to sync with each other.</releaseNotes>
     <copyright>Copyright © 2019 VPKSoft</copyright>
     <tags>wrapper winforms scintilla diff</tags>
     <license type="expression">MIT</license>

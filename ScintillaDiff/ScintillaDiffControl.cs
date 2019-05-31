@@ -262,6 +262,20 @@ namespace ScintillaDiff
                 if (diffStyle != value)
                 {
                     diffStyle = value;
+
+                    // don't synchronize the scroll bars with list view..
+                    if (diffStyle == DiffStyle.DiffList)
+                    {
+                        scintillaOne.ScrollSync = null;
+                        scintillaTwo.ScrollSync = null;
+                    }
+                    else
+                    {
+                        // synchronize the scroll bars with side-by-side view..
+                        scintillaOne.ScrollSync = scintillaTwo;
+                        scintillaTwo.ScrollSync = scintillaOne;
+                    }
+
                     DiffTexts();
                 }
             }

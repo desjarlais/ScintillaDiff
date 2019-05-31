@@ -31,8 +31,8 @@ namespace ScintillaDiff
         private void InitializeComponent()
         {
             this.scMain = new System.Windows.Forms.SplitContainer();
-            this.scintillaOne = new Scintilla();
-            this.scintillaTwo = new Scintilla();
+            this.scintillaOne = new ScintillaDiff.ScrollSyncScintilla();
+            this.scintillaTwo = new ScintillaDiff.ScrollSyncScintilla();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -61,6 +61,7 @@ namespace ScintillaDiff
             this.scintillaOne.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaOne.Location = new System.Drawing.Point(0, 0);
             this.scintillaOne.Name = "scintillaOne";
+            this.scintillaOne.ScrollSync = this.scintillaTwo;
             this.scintillaOne.Size = new System.Drawing.Size(434, 492);
             this.scintillaOne.TabIndex = 0;
             this.scintillaOne.TextChanged += new System.EventHandler(this.Scintilla_TextChanged);
@@ -70,6 +71,7 @@ namespace ScintillaDiff
             this.scintillaTwo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaTwo.Location = new System.Drawing.Point(0, 0);
             this.scintillaTwo.Name = "scintillaTwo";
+            this.scintillaTwo.ScrollSync = this.scintillaOne;
             this.scintillaTwo.Size = new System.Drawing.Size(480, 492);
             this.scintillaTwo.TabIndex = 0;
             this.scintillaTwo.TextChanged += new System.EventHandler(this.Scintilla_TextChanged);
@@ -93,7 +95,7 @@ namespace ScintillaDiff
         #endregion
 
         private System.Windows.Forms.SplitContainer scMain;
-        private Scintilla scintillaOne;
-        private Scintilla scintillaTwo;
+        private ScrollSyncScintilla scintillaOne;
+        private ScrollSyncScintilla scintillaTwo;
     }
 }

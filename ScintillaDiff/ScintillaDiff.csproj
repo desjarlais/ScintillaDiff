@@ -67,6 +67,9 @@
       <DependentUpon>ScintillaDiffControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ScintillaDiffStyles.cs" />
+    <Compile Include="ScrollSyncScintilla.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="StyleRefreshEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
