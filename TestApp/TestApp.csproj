@@ -53,8 +53,8 @@
     <Reference Include="VPKSoft.About, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VPKSoft.About.1.0.0.5\lib\net45\VPKSoft.About.dll</HintPath>
     </Reference>
-    <Reference Include="VPKSoft.VersionCheck, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\VPKSoft.VersionCheck.1.0.0.1\lib\net45\VPKSoft.VersionCheck.dll</HintPath>
+    <Reference Include="VPKSoft.VersionCheck, Version=1.0.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VPKSoft.VersionCheck.1.0.1.4\lib\net47\VPKSoft.VersionCheck.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +101,8 @@
   <ItemGroup>
     <Content Include="DiffLicenses\License_1.txt" />
     <Content Include="DiffLicenses\License_2.txt" />
+    <Content Include="Resources\download_dialog_localization.txt" />
+    <Content Include="setup_version_maintenance.exe" />
     <Content Include="VPKSoft.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

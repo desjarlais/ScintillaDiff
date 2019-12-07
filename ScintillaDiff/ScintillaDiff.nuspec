@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
     <id>$id$</id>
@@ -7,12 +7,15 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/VPKSoft/ScintillaDiff</projectUrl>
-    <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Made the side-by-side view to sync with each other.</releaseNotes>
     <copyright>Copyright © 2019 VPKSoft</copyright>
     <tags>wrapper winforms scintilla diff</tags>
     <license type="expression">MIT</license>
+    <icon>vpksoft_logo.png</icon>
   </metadata>
+  <files>
+    <file src="vpksoft_logo.png" target="" />
+  </files>
 </package>
