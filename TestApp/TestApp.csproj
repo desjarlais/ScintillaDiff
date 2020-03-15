@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiffPlex">
-      <HintPath>..\packages\DiffPlex.1.4.4\lib\net40\DiffPlex.dll</HintPath>
-    </Reference>
     <Reference Include="ScintillaNET">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
     </Reference>
@@ -93,17 +90,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScintillaDiff\ScintillaDiff.csproj">
-      <Project>{CCBE5980-DCFC-42AA-A1F1-2DE58FD63C7F}</Project>
-      <Name>ScintillaDiff</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="DiffLicenses\License_1.txt" />
     <Content Include="DiffLicenses\License_2.txt" />
     <Content Include="Resources\download_dialog_localization.txt" />
     <Content Include="setup_version_maintenance.exe" />
     <Content Include="VPKSoft.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScintillaDiff\ScintillaDiff.csproj">
+      <Project>{ccbe5980-dcfc-42aa-a1f1-2de58fd63c7f}</Project>
+      <Name>ScintillaDiff</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

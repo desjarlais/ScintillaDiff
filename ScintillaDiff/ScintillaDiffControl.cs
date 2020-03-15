@@ -2,7 +2,7 @@
 /*
 MIT License
 
-Copyright(c) 2019 Petteri Kautonen
+Copyright(c) 2020 Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using DiffPlex;
 using DiffPlex.DiffBuilder;
@@ -113,6 +114,9 @@ namespace ScintillaDiff
         private Color diffColorAdded = Color.FromArgb(0xFF, 0X87, 0XFF, 0X87);
         private Color diffColorChangeBackground = Color.FromArgb(0xFF, 0XFC, 0XFF, 0X8C);
         private int diffIndex;
+        private readonly StringBuilder builderLeft = new StringBuilder();
+        private readonly StringBuilder builderRight = new StringBuilder();
+
         #endregion
 
         #region PublicProperties
@@ -652,7 +656,8 @@ namespace ScintillaDiff
         /// <param name="rowText">The text to append to the left <see cref="Scintilla"/> document row.</param>
         private void AppendRowAdded(string rowText)
         {
-            scintillaOne.Text += rowText + Environment.NewLine;
+            builderLeft.AppendLine(rowText);
+//            scintillaOne.Text += rowText + Environment.NewLine;
         }
 
         /// <summary>
@@ -687,7 +692,8 @@ namespace ScintillaDiff
         /// <param name="rowText">The text to append to the right <see cref="Scintilla"/> document row.</param>
         private void AppendRowDeleted(string rowText)
         {
-            scintillaOne.Text += rowText + Environment.NewLine;
+            builderLeft.AppendLine(rowText);
+            //scintillaOne.Text += rowText + Environment.NewLine;
         }
 
         /// <summary>
@@ -783,8 +789,10 @@ namespace ScintillaDiff
         /// <param name="rowText">The text to append to the right and to the left <see cref="Scintilla"/> document rows.</param>
         private void AppendRow(string rowText)
         {
-            scintillaOne.Text += rowText + Environment.NewLine;
-            scintillaTwo.Text += rowText + Environment.NewLine;
+            builderLeft.AppendLine(rowText);
+            builderRight.AppendLine(rowText);
+            //scintillaOne.Text += rowText + Environment.NewLine;
+            //scintillaTwo.Text += rowText + Environment.NewLine;
         }
 
         /// <summary>
@@ -794,8 +802,10 @@ namespace ScintillaDiff
         /// <param name="rowTextRight">The text to append to the right <see cref="Scintilla"/> document rows.</param>
         private void AppendRow(string rowTextLeft, string rowTextRight)
         {
-            scintillaOne.Text += rowTextLeft + Environment.NewLine;
-            scintillaTwo.Text += rowTextRight + Environment.NewLine;
+            builderLeft.AppendLine(rowTextLeft);
+            builderRight.AppendLine(rowTextRight);
+//            scintillaOne.Text += rowTextLeft + Environment.NewLine;
+//            scintillaTwo.Text += rowTextRight + Environment.NewLine;
         }
 
         /// <summary>
@@ -813,6 +823,10 @@ namespace ScintillaDiff
                 scintillaOne.Text = string.Empty;
                 scintillaTwo.Text = string.Empty;
                 
+                // clear the two StringBuilder instance contents..
+                builderLeft.Clear();
+                builderRight.Clear();
+
                 // create a diff for a list style text comparison..
                 var diffBuilder = new InlineDiffBuilder(new Differ());
 
@@ -836,6 +850,8 @@ namespace ScintillaDiff
                             break;
                     }
                 }
+
+                scintillaOne.Text = builderLeft.ToString();
 
                 // set a variable for the line index..
                 int lineIndex = 0;
@@ -912,6 +928,10 @@ namespace ScintillaDiff
                 // clear the two Scintilla control contents..
                 scintillaOne.Text = string.Empty;
                 scintillaTwo.Text = string.Empty;
+
+                // clear the two StringBuilder instance contents..
+                builderLeft.Clear();
+                builderRight.Clear();
                  
                 // create a diff for a side by side text comparison..
                 var diffBuilder = new SideBySideDiffBuilder(new Differ());
@@ -925,6 +945,9 @@ namespace ScintillaDiff
                 {
                     AppendRow(diff.OldText.Lines[i].Text, diff.NewText.Lines[i].Text);
                 }
+
+                scintillaOne.Text = builderLeft.ToString();
+                scintillaTwo.Text = builderRight.ToString();
 
                 // clear the list of difference locations..
                 DiffLocations.Clear();

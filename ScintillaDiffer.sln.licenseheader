@@ -1,10 +1,10 @@
-﻿extensions: designer.cs generated.cs
+extensions: designer.cs generated.cs
 extensions: .cs .cpp .h
 #region License
 /*
 MIT License
 
-Copyright(c) 2019 Petteri Kautonen
+Copyright(c) %CurrentYear% Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
