@@ -18,7 +18,7 @@ A class library for comparing two text files with the ScintillaNET control.
 
 ![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
 
-* @avstri for pointing out the speed up via a StringBuilder #1.
+* [avstri](https://github.com/avstri) for pointing out the speed up via a StringBuilder [#1](https://github.com/VPKSoft/ScintillaDiff/issues/1).
 
 ## Screen-shots
 _**A side-by-side diff**_
