@@ -570,6 +570,7 @@ namespace ScintillaDiff
         private void RecalculateSize()
         {
             int size = scMain.ClientSize.Width - scMain.SplitterWidth;
+			if (size >= 0)
             scMain.SplitterDistance = size / 2;
         }
 
