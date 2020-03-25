@@ -61,6 +61,8 @@ namespace ScintillaDiff
             InitScintillaMargins();
 
             SetSymbols();
+
+			SetLineBackgroundColors();
         }
 
 
@@ -159,6 +161,11 @@ namespace ScintillaDiff
         /// </summary>
         // ReSharper disable once UnusedMember.Global
         public bool IsMatch => textLeft.Equals(textRight);
+
+		/// <summary>
+		/// Gets or sets the value indicating whether the entire line of a change should be highlighted, or just the text within that line.
+		/// </summary>
+		public bool IsEntireLineHighligted { get; set; } = false;
         #endregion
 
         #region PublicEvents        
@@ -571,7 +578,7 @@ namespace ScintillaDiff
         {
             int size = scMain.ClientSize.Width - scMain.SplitterWidth;
 			if (size >= 0)
-            scMain.SplitterDistance = size / 2;
+				scMain.SplitterDistance = size / 2;
         }
 
         /// <summary>
@@ -651,11 +658,40 @@ namespace ScintillaDiff
             scintillaTwo.Markers[imageRowDiffScintillaIndex].DefineRgbaImage(imageRowDiff);
         }
 
-        /// <summary>
-        /// Appends a row to the left <see cref="Scintilla"/> control.
-        /// </summary>
-        /// <param name="rowText">The text to append to the left <see cref="Scintilla"/> document row.</param>
-        private void AppendRowAdded(string rowText)
+		/// <summary>
+		/// Sets the colours for the background of lines, depending on change type.
+		/// </summary>
+		private void SetLineBackgroundColors()
+		{
+			int deleted = (int)ChangeType.Deleted;
+			int inserted = (int)ChangeType.Inserted;
+			int modified = (int)ChangeType.Modified;
+
+			scintillaOne.Styles[deleted].FillLine = true;
+			scintillaOne.Styles[deleted].BackColor = DiffColorDeleted;
+
+			scintillaOne.Styles[inserted].FillLine = true;
+			scintillaOne.Styles[inserted].BackColor = DiffColorAdded;
+
+			scintillaOne.Styles[modified].FillLine = true;
+			scintillaOne.Styles[modified].BackColor = DiffColorChangeBackground;
+
+			scintillaTwo.Styles[deleted].FillLine = true;
+			scintillaTwo.Styles[deleted].BackColor = DiffColorDeleted;
+
+			scintillaTwo.Styles[inserted].FillLine = true;
+			scintillaTwo.Styles[inserted].BackColor = DiffColorAdded;
+
+			scintillaTwo.Styles[modified].FillLine = true;
+			scintillaTwo.Styles[modified].BackColor = DiffColorChangeBackground;
+
+		}
+
+		/// <summary>
+		/// Appends a row to the left <see cref="Scintilla"/> control.
+		/// </summary>
+		/// <param name="rowText">The text to append to the left <see cref="Scintilla"/> document row.</param>
+		private void AppendRowAdded(string rowText)
         {
             builderLeft.AppendLine(rowText);
 //            scintillaOne.Text += rowText + Environment.NewLine;
@@ -861,17 +897,20 @@ namespace ScintillaDiff
                 // contents have been set..
                 foreach (var line in diff.Lines)
                 {
-                    switch (line.Type)
+					if (IsEntireLineHighligted)
+						SetLineBackgroundColor(lineIndex, line.Type);
+
+					switch (line.Type)
                     {
                         case ChangeType.Inserted:
                             // save the line location..
                             SaveLineLocation(lineIndex);
-                            AppendRowAddedMarker(lineIndex); 
+							AppendRowAddedMarker(lineIndex); 
                             break;
                         case ChangeType.Deleted:
                             // save the line location..
                             SaveLineLocation(lineIndex);
-                            AppendRowDeletedMarker(lineIndex);
+							AppendRowDeletedMarker(lineIndex);
                             break;
                         case ChangeType.Unchanged:
                             AppendRowOkMarker(lineIndex);
@@ -879,7 +918,7 @@ namespace ScintillaDiff
                         case ChangeType.Modified:
                             // save the line location..
                             SaveLineLocation(lineIndex);
-                            AppendRowDiffMarker(lineIndex);
+							AppendRowDiffMarker(lineIndex);
                             break;
                     }
 
@@ -953,58 +992,82 @@ namespace ScintillaDiff
                 // clear the list of difference locations..
                 DiffLocations.Clear();
 
-                // loop through the meta-data of the diff result and set the styling
-                // for the Scintilla controls accordingly..
-                for (int i = 0; i < diff.OldText.Lines.Count; i++)
-                {
-                    switch (diff.OldText.Lines[i].Type)
-                    {
-                        case ChangeType.Inserted:
-                            AppendRowAddedMarker(i, true);
-                            // save the line location..
-                            SaveLineLocation(i);
-                            break;
-                        case ChangeType.Deleted:
-                            AppendRowDeletedMarker(i, true);
-                            // save the line location..
-                            SaveLineLocation(i);
-                            break;
-                        case ChangeType.Unchanged:
-                            AppendRowOkMarker(i, true);
-                            break;
-                        case ChangeType.Modified:
-                            // save the line location..
-                            SaveLineLocation(i);
-                            AppendRowDiffMarker(i, false);
-                            MarkLineWithColor(i, DiffColorChangeBackground, true);
-                            HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
-                            break;
-                    }
+				if (IsEntireLineHighligted)
+				{
+					for (int i = 0; i < diff.OldText.Lines.Count; i++)
+					{
+						if (diff.OldText.Lines[i].Type == ChangeType.Modified || diff.NewText.Lines[i].Type == ChangeType.Modified)
+						{
+							SetLineBackgroundColor(i, ChangeType.Modified);
+							HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
+							HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
+						}
+						else if (diff.OldText.Lines[i].Type == ChangeType.Deleted)
+						{
+							SetLineBackgroundColor(i, ChangeType.Deleted);
+							AppendRowDeletedMarker(i, left: true);
+						}
+						else if (diff.OldText.Lines[i].Type == ChangeType.Imaginary && diff.NewText.Lines[i].Type == ChangeType.Inserted)
+						{
+							SetLineBackgroundColor(i, ChangeType.Inserted);
+						}
+					}
+				}
+				else
+				{
+					// loop through the meta-data of the diff result and set the styling
+					// for the Scintilla controls accordingly..
+					for (int i = 0; i < diff.OldText.Lines.Count; i++)
+					{
+						switch (diff.OldText.Lines[i].Type)
+						{
+							case ChangeType.Inserted:
+								AppendRowAddedMarker(i, true);
+								// save the line location..
+								SaveLineLocation(i);
+								break;
+							case ChangeType.Deleted:
+								AppendRowDeletedMarker(i, true);
+								// save the line location..
+								SaveLineLocation(i);
+								break;
+							case ChangeType.Unchanged:
+								AppendRowOkMarker(i, true);
+								break;
+							case ChangeType.Modified:
+								// save the line location..
+								SaveLineLocation(i);
+								AppendRowDiffMarker(i, false);
+								MarkLineWithColor(i, DiffColorChangeBackground, true);
+								HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
+								break;
+						}
 
-                    switch (diff.NewText.Lines[i].Type)
-                    {
-                        case ChangeType.Inserted:
-                            AppendRowAddedMarker(i, false);
-                            // save the line location..
-                            SaveLineLocation(i);
-                            break;
-                        case ChangeType.Deleted:
-                            AppendRowDeletedMarker(i, false);
-                            // save the line location..
-                            SaveLineLocation(i);
-                            break;
-                        case ChangeType.Unchanged:
-                            AppendRowOkMarker(i, false);
-                            break;
-                        case ChangeType.Modified:
-                            // save the line location..
-                            SaveLineLocation(i);
-                            AppendRowDiffMarker(i, true);
-                            MarkLineWithColor(i, DiffColorChangeBackground, false);
-                            HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
-                            break;
-                    }
-                }
+						switch (diff.NewText.Lines[i].Type)
+						{
+							case ChangeType.Inserted:
+								AppendRowAddedMarker(i, false);
+								// save the line location..
+								SaveLineLocation(i);
+								break;
+							case ChangeType.Deleted:
+								AppendRowDeletedMarker(i, false);
+								// save the line location..
+								SaveLineLocation(i);
+								break;
+							case ChangeType.Unchanged:
+								AppendRowOkMarker(i, false);
+								break;
+							case ChangeType.Modified:
+								// save the line location..
+								SaveLineLocation(i);
+								AppendRowDiffMarker(i, true);
+								MarkLineWithColor(i, DiffColorChangeBackground, false);
+								HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
+								break;
+						}
+					}
+				}
 
                 // reset the index of the next difference..
                 diffIndex = -1;
@@ -1060,6 +1123,17 @@ namespace ScintillaDiff
             Highlight.HighlightRange(left ? scintillaOne : scintillaTwo, MarkColorIndexRemovedOrAdded, start, length,
                 color);
         }
+
+		/// <summary>
+		/// Sets the background colour for the entire line of a <see cref="Scintilla"/> control.
+		/// </summary>
+		/// <param name="lineIndex">The index of the line to highlight.</param>
+		/// <param name="changeType">The type of change that was made to the line, indicating which color to set the background.</param>
+		private void SetLineBackgroundColor(int lineIndex, ChangeType changeType)
+		{
+			Highlight.HighlightLine(scintillaOne, lineIndex, (int)changeType);
+			Highlight.HighlightLine(scintillaTwo, lineIndex, (int)changeType);
+		}
 
         /// <summary>
         /// Handles the difference sub-pieces in a side-by-side comparison to set a color for a word.
