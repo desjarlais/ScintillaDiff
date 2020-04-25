@@ -34,18 +34,18 @@ namespace ScintillaDiff
     /// </summary>
     public class Highlight
     {
-        /// <summary>
-        /// Highlights a given range with a given color and given alpha values of the <see cref="Scintilla"/> control.
-        /// </summary>
-        /// <param name="scintilla">The scintilla of which words to highlight.</param>
-        /// <param name="num">The indicator number for the <paramref name="scintilla"/>.Indicators 0-7 could be in use by a lexer so use a higher value.</param>
-        /// <param name="start">The starting position of the highlight area.</param>
-        /// <param name="length">The length of the highlight area.</param>
-        /// <param name="color">The color to use for the highlight.</param>
-        /// <param name="alpha">The transparency value of the indicator.</param>
-        /// <param name="outlineAlpha">The transparency value of the indicator outline.</param>
-        /// <note>(C): https://github.com/jacobslusser/ScintillaNET/wiki/Find-and-Highlight-Words</note>
-        public static void HighlightRange(Scintilla scintilla, int num, int start, int length, Color color, byte alpha = 255, byte outlineAlpha = 255)
+		/// <summary>
+		/// Highlights a given range with a given color and given alpha values of the <see cref="Scintilla"/> control.
+		/// </summary>
+		/// <param name="scintilla">The scintilla of which words to highlight.</param>
+		/// <param name="num">The indicator number for the <paramref name="scintilla"/>.Indicators 0-7 could be in use by a lexer so use a higher value.</param>
+		/// <param name="start">The starting position of the highlight area.</param>
+		/// <param name="length">The length of the highlight area.</param>
+		/// <param name="color">The color to use for the highlight.</param>
+		/// <param name="alpha">The transparency value of the indicator.</param>
+		/// <param name="outlineAlpha">The transparency value of the indicator outline.</param>
+		/// <note>(C): https://github.com/jacobslusser/ScintillaNET/wiki/Find-and-Highlight-Words</note>
+		public static void HighlightRange(Scintilla scintilla, int num, int start, int length, Color color, byte alpha = 255, byte outlineAlpha = 255)
         {
             // Remove all uses of our indicator
             scintilla.IndicatorCurrent = num;
@@ -60,6 +60,21 @@ namespace ScintillaDiff
             // Mark the search position with the current indicator..
             scintilla.IndicatorFillRange(start, length);
         }
+
+		/// <summary>
+		/// Highlights an entire line
+		/// </summary>
+		/// <param name="scintilla">The scintilla of which contains the line to highlight.</param>
+		/// <param name="lineIndex">The index of the line to be highlighted within the scintilla.</param>
+		/// <param name="changeType">The type of change has been made, indicating which colour to highlight the line with.</param>
+		public static void HighlightLine(Scintilla scintilla, int lineIndex, int changeType)
+		{
+			int start = scintilla.Lines[lineIndex].Position;
+			int length = scintilla.Lines[lineIndex].Length;
+
+			scintilla.StartStyling(start);
+			scintilla.SetStyling(length, changeType);
+		}
 
         /// <summary>
         /// Clears the given style form a <see cref="Scintilla"/>.
