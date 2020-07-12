@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>$id$</id>
+    <id>$id$.SUO</id>
     <version>$version$</version>
     <title>$title$</title>
     <authors>$author$</authors>
@@ -9,8 +9,8 @@
     <projectUrl>https://github.com/VPKSoft/ScintillaDiff</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Updated Diffplex dependecy to 1.6.1. Merged pull request from @bobhodge, #3. Merged pull request from @XJmichaelw, #2.</releaseNotes>
-    <copyright>Copyright © 2019 VPKSoft</copyright>
+    <releaseNotes>Same package with the unofficial.ScintillaNET NuGet dependency.</releaseNotes>
+    <copyright>Copyright © 2020 VPKSoft</copyright>
     <tags>wrapper winforms scintilla diff</tags>
     <license type="expression">MIT</license>
     <icon>vpksoft_logo.png</icon>
