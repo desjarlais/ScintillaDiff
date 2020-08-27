@@ -47,6 +47,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VPKSoft.About, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VPKSoft.About.1.0.0.5\lib\net45\VPKSoft.About.dll</HintPath>
+    </Reference>
+    <Reference Include="VPKSoft.VersionCheck, Version=1.0.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VPKSoft.VersionCheck.1.0.1.4\lib\net47\VPKSoft.VersionCheck.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormMain.cs">
@@ -69,6 +75,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,20 +92,15 @@
   <ItemGroup>
     <Content Include="DiffLicenses\License_1.txt" />
     <Content Include="DiffLicenses\License_2.txt" />
+    <Content Include="Resources\download_dialog_localization.txt" />
+    <Content Include="setup_version_maintenance.exe" />
+    <Content Include="VPKSoft.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScintillaDiff\ScintillaDiff.csproj">
       <Project>{ccbe5980-dcfc-42aa-a1f1-2de58fd63c7f}</Project>
       <Name>ScintillaDiff</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="VPKSoft.About">
-      <Version>1.0.0.5</Version>
-    </PackageReference>
-    <PackageReference Include="VPKSoft.VersionCheck">
-      <Version>1.0.1.4</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

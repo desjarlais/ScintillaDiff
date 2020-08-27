@@ -4,17 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5C584842-4CE3-4323-BD3E-E73798197F0D}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>TestApp</RootNamespace>
-    <AssemblyName>TestApp</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <ProjectGuid>{CCBE5980-DCFC-42AA-A1F1-2DE58FD63C7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScintillaDiff</RootNamespace>
+    <AssemblyName>ScintillaDiff</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,83 +23,75 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\ScintillaDiff.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\ScintillaDiff.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ScintillaNET">
+    <Reference Include="DiffPlex, Version=1.6.3.0, Culture=neutral, PublicKeyToken=1d35e91d1bd7bc0f, processorArchitecture=MSIL">
+      <HintPath>..\packages\DiffPlex.1.6.3\lib\net40\DiffPlex.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="HighLight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ScintillaDiffControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScintillaDiffControl.designer.cs">
+      <DependentUpon>ScintillaDiffControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScintillaDiffStyles.cs" />
+    <Compile Include="ScrollSyncScintilla.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StyleRefreshEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <EmbeddedResource Include="ScintillaDiffControl.resx">
+      <DependentUpon>ScintillaDiffControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DiffLicenses\License_1.txt" />
-    <Content Include="DiffLicenses\License_2.txt" />
+    <None Include="Resources\plus.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScintillaDiff\ScintillaDiff.csproj">
-      <Project>{ccbe5980-dcfc-42aa-a1f1-2de58fd63c7f}</Project>
-      <Name>ScintillaDiff</Name>
-    </ProjectReference>
+    <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="VPKSoft.About">
-      <Version>1.0.0.5</Version>
-    </PackageReference>
-    <PackageReference Include="VPKSoft.VersionCheck">
-      <Version>1.0.1.4</Version>
-    </PackageReference>
+    <None Include="Resources\diff.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

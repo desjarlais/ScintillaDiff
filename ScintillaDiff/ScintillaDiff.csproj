@@ -35,12 +35,6 @@
     <DocumentationFile>bin\Release\ScintillaDiff.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiffPlex, Version=1.6.3.0, Culture=neutral, PublicKeyToken=1d35e91d1bd7bc0f, processorArchitecture=MSIL">
-      <HintPath>..\packages\DiffPlex.1.6.3\lib\net40\DiffPlex.dll</HintPath>
-    </Reference>
-    <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -81,7 +75,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +85,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\diff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DiffPlex">
+      <Version>1.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="jacobslusser.ScintillaNET">
+      <Version>3.6.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

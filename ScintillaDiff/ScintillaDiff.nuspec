@@ -7,14 +7,13 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/VPKSoft/ScintillaDiff</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Updated Diffplex dependecy to 1.6.3.</releaseNotes>
-    <copyright>Copyright © 2019 VPKSoft</copyright>
+    <releaseNotes>.NET Framework requirement to 4.</releaseNotes>
+    <copyright>Copyright © 2020 VPKSoft</copyright>
     <tags>wrapper winforms scintilla diff</tags>
     <license type="expression">MIT</license>
     <icon>vpksoft_logo.png</icon>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
   </metadata>
   <files>
     <file src="vpksoft_logo.png" target="" />
