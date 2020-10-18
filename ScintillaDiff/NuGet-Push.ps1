@@ -66,8 +66,8 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
 	    Write-Output (-join("Package signed: ", $file, "."))
 
         # push the NuGet packges..
-        #$nuget_api = "https://api.nuget.org/v3/index.json"
-        $nuget_api = "https://apiint.nugettest.org/v3/index.json"
+        $nuget_api = "https://api.nuget.org/v3/index.json"
+        #$nuget_api = "https://apiint.nugettest.org/v3/index.json"
         $nuget_packages_api = "https://nuget.pkg.github.com/VPKSoft/index.json"
 
 	    Write-Output (-join("Pushing NuGet:", $file, " ..."))
