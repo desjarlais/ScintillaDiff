@@ -17,6 +17,7 @@
        - checkout
        - run: msbuild ScintillaDiff/ScintillaDiff.csproj /t:restore
        - run: msbuild ScintillaDiff/ScintillaDiff.csproj /p:Configuration=Release
+       - run: msbuild ScintillaDiff.SUO/ScintillaDiff.SUO.csproj /t:restore
        - run: msbuild ScintillaDiff.SUO/ScintillaDiff.SUO.csproj /p:Configuration=Release
 # No need for bleeding edge       - run: dotnet tool install --global PowerShell
        - run: 
