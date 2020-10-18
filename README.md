@@ -20,7 +20,7 @@ A class library for comparing two text files with the ScintillaNET control.
 
 * [igitur](https://github.com/igitur) For pointing out the .NET Framework 4 level-drop requirement
 
-* [goroggy](https://github.com/goroggy) For poing out the need for a character diff ([#7](https://github.com/VPKSoft/ScintillaDiff/issues/7)).
+* [goroggy](https://github.com/goroggy) For pointing out the need for a character diff ([#7](https://github.com/VPKSoft/ScintillaDiff/issues/7)).
 
 * [JetBrains](http://www.jetbrains.com) for their open source license(s).
 
