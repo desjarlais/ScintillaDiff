@@ -22,5 +22,5 @@
           name: Push to NuGet
           command: |
             dotnet pack ScintillaDiff/ScintillaDiff.csproj -c:Release
-            LangLib/NuGet-Push.ps1
+            ScintillaDiff/NuGet-Push.ps1
             
