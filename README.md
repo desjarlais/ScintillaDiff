@@ -18,6 +18,10 @@ A class library for comparing two text files with the ScintillaNET control.
 * [XJmichaelw](https://github.com/XJmichaelw) For adding IsEntireLineHighlighted attribute, which when set to true, will set the entire background of a line to a given colour corresponding to the change type for that line. And a bug fix leading to a crash when a form containing the control was minimized.
 * [avstri](https://github.com/avstri) for pointing out the speed up via a StringBuilder [#1](https://github.com/VPKSoft/ScintillaDiff/issues/1).
 
+* [igitur](https://github.com/igitur) For pointing out the .NET Framework 4 level-drop requirement
+
+* [goroggy](https://github.com/goroggy) For poing out the need for a character diff (#7).
+
 * [JetBrains](http://www.jetbrains.com) for their open source license(s).
 
 ![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
