@@ -62,7 +62,7 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
 
         $args = @("sign", $file, "-CertificatePath", "C:\vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
 
-        nuget.exe $args > null 2>&1
+        nuget.exe $args # > null 2>&1
 	    Write-Output (-join("Package signed: ", $file, "."))
 
         # push the NuGet packges..
