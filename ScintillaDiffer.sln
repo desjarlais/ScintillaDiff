@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScintillaDiff", "ScintillaD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{5C584842-4CE3-4323-BD3E-E73798197F0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScintillaDiff.SUO", "ScintillaDiff.SUO\ScintillaDiff.SUO.csproj", "{3AA9C755-240A-4BD4-A288-CD05648220A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5C584842-4CE3-4323-BD3E-E73798197F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C584842-4CE3-4323-BD3E-E73798197F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C584842-4CE3-4323-BD3E-E73798197F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AA9C755-240A-4BD4-A288-CD05648220A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA9C755-240A-4BD4-A288-CD05648220A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AA9C755-240A-4BD4-A288-CD05648220A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AA9C755-240A-4BD4-A288-CD05648220A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

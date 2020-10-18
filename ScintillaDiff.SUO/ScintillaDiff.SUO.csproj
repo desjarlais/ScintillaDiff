@@ -4,8 +4,19 @@
     <TargetFramework>net40</TargetFramework>
     <AssemblyTitle>ScintillaDiff.SUO</AssemblyTitle>
     <Product>ScintillaDiff.SUO</Product>
-    <Copyright>Copyright ©  2020</Copyright>
+    <Copyright>Copyright © VPKSoft 2020</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Version>1.0.8</Version>
+    <Description>A class library for comparing two text files with the ScintillaNET control.</Description>
+    <Authors>VPKSoft</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageIcon>vpksoft_logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/VPKSoft/ScintillaDiff</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>wrapper winforms scintilla diff unofficial</PackageTags>
+    <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaDiff/</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -14,16 +25,31 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="C:\Users\Petteri Kautonen\.nuget\packages\unofficial.scintillanet\3.6.51\contentFiles\any\net40\SciLexer.dll" />
+    <Content Remove="C:\Users\Petteri Kautonen\.nuget\packages\unofficial.scintillanet\3.6.51\contentFiles\any\net40\SciLexer.exp" />
+    <Content Remove="C:\Users\Petteri Kautonen\.nuget\packages\unofficial.scintillanet\3.6.51\contentFiles\any\net40\SciLexer.lib" />
+    <Content Remove="C:\Users\Petteri Kautonen\.nuget\packages\unofficial.scintillanet\3.6.51\contentFiles\any\net40\SciLexer.pdb" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ScintillaDiff\Enumerations\CharChangedType.cs" Link="Enumerations\CharChangedType.cs" />
     <Compile Include="..\ScintillaDiff\HighLight.cs" Link="HighLight.cs" />
     <Compile Include="..\ScintillaDiff\ScintillaDiffControl.cs" Link="ScintillaDiffControl.cs" />
     <Compile Include="..\ScintillaDiff\ScintillaDiffControl.designer.cs" Link="ScintillaDiffControl.designer.cs" />
     <Compile Include="..\ScintillaDiff\ScintillaDiffStyles.cs" Link="ScintillaDiffStyles.cs" />
     <Compile Include="..\ScintillaDiff\ScrollSyncScintilla.cs" Link="ScrollSyncScintilla.cs" />
     <Compile Include="..\ScintillaDiff\StyleRefreshEventArgs.cs" Link="StyleRefreshEventArgs.cs" />
+    <Compile Include="..\ScintillaDiff\UtilityClasses\CharacterChangeType.cs" Link="UtilityClasses\CharacterChangeType.cs" />
+    <Compile Include="..\ScintillaDiff\UtilityClasses\Pair.cs" Link="UtilityClasses\Pair.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\ScintillaDiff\Resources\diff.png" Link="diff.png" />
+    <Content Include="..\ScintillaDiff\Resources\minus.png" Link="minus.png" />
+    <Content Include="..\ScintillaDiff\Resources\ok.png" Link="ok.png" />
+    <Content Include="..\ScintillaDiff\Resources\plus.png" Link="plus.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\ScintillaDiff\ScintillaDiffControl.resx" Link="ScintillaDiffControl.resx" />
@@ -31,5 +57,22 @@
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.6.3" />
     <PackageReference Include="unofficial.ScintillaNET" Version="3.6.51" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enumerations\" />
+    <Folder Include="UtilityClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ScintillaDiff\vpksoft_logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
