@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{3AA9C755-240A-4BD4-A288-CD05648220A1}</ProjectGuid>
+    <TargetFramework>net40</TargetFramework>
+    <AssemblyTitle>ScintillaDiff.SUO</AssemblyTitle>
+    <Product>ScintillaDiff.SUO</Product>
+    <Copyright>Copyright ©  2020</Copyright>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\ScintillaDiff\HighLight.cs" Link="HighLight.cs" />
+    <Compile Include="..\ScintillaDiff\ScintillaDiffControl.cs" Link="ScintillaDiffControl.cs" />
+    <Compile Include="..\ScintillaDiff\ScintillaDiffControl.designer.cs" Link="ScintillaDiffControl.designer.cs" />
+    <Compile Include="..\ScintillaDiff\ScintillaDiffStyles.cs" Link="ScintillaDiffStyles.cs" />
+    <Compile Include="..\ScintillaDiff\ScrollSyncScintilla.cs" Link="ScrollSyncScintilla.cs" />
+    <Compile Include="..\ScintillaDiff\StyleRefreshEventArgs.cs" Link="StyleRefreshEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\ScintillaDiff\ScintillaDiffControl.resx" Link="ScintillaDiffControl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DiffPlex" Version="1.6.3" />
+    <PackageReference Include="unofficial.ScintillaNET" Version="3.6.51" />
+  </ItemGroup>
+</Project>
