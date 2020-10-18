@@ -66,7 +66,7 @@ namespace ScintillaDiff
 		/// </summary>
 		/// <param name="scintilla">The scintilla of which contains the line to highlight.</param>
 		/// <param name="lineIndex">The index of the line to be highlighted within the scintilla.</param>
-		/// <param name="changeType">The type of change has been made, indicating which colour to highlight the line with.</param>
+		/// <param name="changeType">The type of change has been made, indicating which color to highlight the line with.</param>
 		public static void HighlightLine(Scintilla scintilla, int lineIndex, int changeType)
 		{
 			int start = scintilla.Lines[lineIndex].Position;
@@ -86,6 +86,49 @@ namespace ScintillaDiff
         {
             scintilla.IndicatorCurrent = num;
             scintilla.IndicatorClearRange(0, scintilla.TextLength);
+        }
+
+        /// <summary>
+        /// Clears the given styles form a <see cref="Scintilla"/>.
+        /// </summary>
+        /// <param name="scintilla">The scintilla to clear the styles from.</param>
+        /// <param name="numbers">The numbers of the styles to clear.</param>
+        public static void ClearStyle(Scintilla scintilla, params int[] numbers)
+        {
+            foreach (var number in numbers)
+            {
+                ClearStyle(scintilla, number);
+            }
+        }
+
+        /// <summary>
+        /// Clears the style from a specified area of the <see cref="Scintilla"/> control.
+        /// </summary>
+        /// <param name="scintilla">The scintilla to clear the style from.</param>
+        /// <param name="line">The line from where to clear the style from.</param>
+        /// <param name="pos">The position in the line to clear the style from.</param>
+        /// <param name="length">The length of the text to clear the style from.</param>
+        /// <param name="number">The number of the style to clear.</param>
+        public static void ClearStyleArea(Scintilla scintilla, int line, int pos, int length, int number)
+        {
+            scintilla.IndicatorCurrent = number;
+            scintilla.IndicatorClearRange(scintilla.Lines[line].Position + pos, length);
+        }
+
+        /// <summary>
+        /// Clears the styles from a specified area of the <see cref="Scintilla"/> control.
+        /// </summary>
+        /// <param name="scintilla">The scintilla to clear the styles from.</param>
+        /// <param name="line">The line from where to clear the styles from.</param>
+        /// <param name="pos">The position in the line to clear the styles from.</param>
+        /// <param name="length">The length of the text to clear the styles from.</param>
+        /// <param name="numbers">The numbers of the styles to clear.</param>
+        public static void ClearStyleArea(Scintilla scintilla, int line, int pos, int length, params int[] numbers)
+        {
+            foreach (var number in numbers)
+            {
+                ClearStyleArea(scintilla, line, pos, length, number);
+            }
         }
     }
 }

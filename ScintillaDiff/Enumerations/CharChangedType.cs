@@ -24,14 +24,26 @@ SOFTWARE.
 */
 #endregion
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+namespace ScintillaDiff.Enumerations
+{
+    /// <summary>
+    /// An enumeration for the character change type in case the character level comparison is set in the <see cref="ScintillaDiffControl"/>.
+    /// </summary>
+    public enum CharChangedType
+    {
+        /// <summary>
+        /// The character was modified.
+        /// </summary>
+        Modified,
 
-// Setting ComVisible to false makes the types in this assembly not visible
-// to COM components.  If you need to access a type in this assembly from
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+        /// <summary>
+        /// The character was added.
+        /// </summary>
+        Added,
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ccbe5980-dcfc-42aa-a1f1-2de58fd63c7f")]
+        /// <summary>
+        /// The character was removed.
+        /// </summary>
+        Removed,
+    }
+}

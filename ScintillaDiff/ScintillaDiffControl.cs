@@ -33,6 +33,9 @@ using System.Windows.Forms;
 using DiffPlex;
 using DiffPlex.DiffBuilder;
 using DiffPlex.DiffBuilder.Model;
+using DiffPlex.Model;
+using ScintillaDiff.Enumerations;
+using ScintillaDiff.UtilityClasses;
 using ScintillaNET;
 using static ScintillaDiff.ScintillaDiffStyles;
 
@@ -73,6 +76,7 @@ namespace ScintillaDiff
             RecalculateSize();
         }
 
+        // ReSharper disable once CommentTypo
         #region https://github.com/jacobslusser/ScintillaNET/wiki/Displaying-Line-Numbers
 
         private void Scintilla_TextChanged(object sender, EventArgs e)
@@ -81,6 +85,7 @@ namespace ScintillaDiff
 
             int maxLineNumberCharLengthFromTag = (int) scintilla.Tag;
 
+            // ReSharper disable once CommentTypo
             // Did the number of characters in the line number display change?
             // i.e. nnn VS nn, or nnnn VS nn, etc...
             var maxLineNumberCharLength = scintilla.Lines.Count.ToString().Length;
@@ -104,21 +109,33 @@ namespace ScintillaDiff
         private Bitmap imageRowDeleted = Properties.Resources.minus;
         private Bitmap imageRowOk = Properties.Resources.ok;
         private Bitmap imageRowDiff = Properties.Resources.diff;
+
         private int imageRowAddedScintillaIndex = 28;
         private int imageRowDeletedScintillaIndex = 29;
         private int imageRowOkScintillaIndex = 30;
         private int imageRowDiffScintillaIndex = 31;
+
+        private int markColorCharacterChanged = 27;
+        private int markColorCharacterRemoved = 28;
+        private int markColorCharacterAdded = 29;
         private int markColorIndexRemovedOrAdded = 30;
         private int markColorIndexModifiedBackground = 31;
+
         private bool useRowOkSign;
         private DiffStyle diffStyle = DiffStyle.DiffList;
         private Color diffColorDeleted = Color.FromArgb(0xFF, 0XFF, 0XB2, 0XB2);
-        private Color diffColorAdded = Color.FromArgb(0xFF, 0X87, 0XFF, 0X87);
+        private Color diffColorAdded = Color.FromArgb(0xFF, 0XD4, 0XF2, 0XC4);
+
+        private Color diffColorCharDeleted = Color.FromArgb(0xFF, 0XE1, 0X7D, 0X7D);
+        private Color diffColorCharAdded = Color.FromArgb(0xFF, 0X9A, 0XEA, 0X6F);
+
         private Color diffColorChangeBackground = Color.FromArgb(0xFF, 0XFC, 0XFF, 0X8C);
         private int diffIndex;
         private readonly StringBuilder builderLeft = new StringBuilder();
         private readonly StringBuilder builderRight = new StringBuilder();
 
+        private bool characterComparison;
+        private bool characterComparisonMarkAddRemove;
         #endregion
 
         #region PublicProperties
@@ -160,12 +177,24 @@ namespace ScintillaDiff
         /// Gets a value indicating whether the two compared texts differs from each-other.
         /// </summary>
         // ReSharper disable once UnusedMember.Global
+        [Browsable(false)]
         public bool IsMatch => textLeft.Equals(textRight);
 
 		/// <summary>
 		/// Gets or sets the value indicating whether the entire line of a change should be highlighted, or just the text within that line.
 		/// </summary>
-		public bool IsEntireLineHighligted { get; set; } = false;
+        [Browsable(false)]
+		public bool IsEntireLineHighlighted { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets the value indicating whether the entire line of a change should be highlighted, or just the text within that line.
+        /// </summary>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        // ReSharper disable once IdentifierTypo :: this is left behind to maintain backwards compatibility..
+        // ReSharper disable once UnusedMember.Global :: this is left behind to maintain backwards compatibility..
+        public bool IsEntireLineHighligted => IsEntireLineHighlighted; // don't
+
         #endregion
 
         #region PublicEvents        
@@ -184,6 +213,66 @@ namespace ScintillaDiff
         #endregion
 
         #region PublicVisualProperties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use character comparison on lines.
+        /// </summary>
+        /// <value><c>true</c> if to use character comparison on lines; otherwise, <c>false</c>.</value>
+        [Browsable(true)]
+        [Category("Behaviour")]
+        [Description("Gets or sets a value indicating whether to use character comparison on lines.")]
+        public bool CharacterComparison
+        {
+            get => characterComparison;
+            set
+            {
+                if (value != characterComparison)
+                {
+                    characterComparison = value;
+                    DiffTexts();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the character comparison should mark added and removed characters.
+        /// </summary>
+        /// <value><c>true</c> if the character comparison should mark added and removed characters; otherwise, <c>false</c>.</value>
+        [Browsable(true)]
+        [Category("Behaviour")]
+        [Description("Gets or sets a value indicating whether the character comparison should mark added and removed characters.")]
+        public bool CharacterComparisonMarkAddRemove 
+        {
+            get => characterComparisonMarkAddRemove;
+            set
+            {
+                if (value != characterComparisonMarkAddRemove)
+                {
+                    characterComparisonMarkAddRemove = value;
+                    DiffTexts();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the symbol for a removed character.
+        /// </summary>
+        /// <value>The removed character symbol.</value>
+        [Browsable(true)]
+        [Category("Appearance")]
+        [Description("Gets or sets the symbol for a removed character.")]
+        public char RemovedCharacterSymbol { get; set; } = '-';
+
+        /// <summary>
+        /// Gets or sets the symbol for an added character.
+        /// </summary>
+        /// <value>The added character symbol.</value>
+        [Browsable(true)]
+        [Category("Appearance")]
+        [Description("Gets or sets the symbol for an added character.")]
+        public char AddedCharacterSymbol { get; set; } = '+';
+
+
         /// <summary>
         /// Gets or sets the index for the style for a mark color used by the <see cref="Scintilla"/> control to indicate a addition or a deletion difference.
         /// </summary>
@@ -547,6 +636,44 @@ namespace ScintillaDiff
         }
 
         /// <summary>
+        /// Gets or sets the text deleted color for the <see cref="Scintilla"/> control.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Diff")]
+        [Description("Gets or sets the character deleted color for the Scintilla control.")]
+        public Color DiffColorCharDeleted
+        {
+            get => diffColorCharDeleted;
+            set
+            {
+                if (value != diffColorCharDeleted)
+                {
+                    diffColorCharDeleted = value;
+                    DiffTexts();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the text inserted color for the <see cref="Scintilla"/> control.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Diff")]
+        [Description("Gets or sets the character inserted color for the Scintilla control.")]
+        public Color DiffColorCharAdded
+        {
+            get => diffColorCharAdded;
+            set
+            {
+                if (value != diffColorCharAdded)
+                {
+                    diffColorCharAdded = value;
+                    DiffTexts();
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the background color for a changed text row for the <see cref="Scintilla"/> control.
         /// </summary>
         [Browsable(true)]
@@ -659,7 +786,7 @@ namespace ScintillaDiff
         }
 
 		/// <summary>
-		/// Sets the colours for the background of lines, depending on change type.
+		/// Sets the colors for the background of lines, depending on change type.
 		/// </summary>
 		private void SetLineBackgroundColors()
 		{
@@ -684,8 +811,7 @@ namespace ScintillaDiff
 
 			scintillaTwo.Styles[modified].FillLine = true;
 			scintillaTwo.Styles[modified].BackColor = DiffColorChangeBackground;
-
-		}
+        }
 
 		/// <summary>
 		/// Appends a row to the left <see cref="Scintilla"/> control.
@@ -897,7 +1023,7 @@ namespace ScintillaDiff
                 // contents have been set..
                 foreach (var line in diff.Lines)
                 {
-					if (IsEntireLineHighligted)
+					if (IsEntireLineHighlighted)
 						SetLineBackgroundColor(lineIndex, line.Type);
 
 					switch (line.Type)
@@ -950,6 +1076,77 @@ namespace ScintillaDiff
             DiffLocations.Add(lineIndex);
         }
 
+        private KeyValuePair<string, string> SpanLeftRightChars(DiffResult diffResult, int line, string oldLine,
+            string newLine, ref List<CharacterChangeType> charChangedList)
+        {
+            if (diffResult == null || diffResult.DiffBlocks.Count == 0)
+            {
+                return new KeyValuePair<string, string>(oldLine, newLine);
+            }
+
+            oldLine = oldLine ?? string.Empty;
+            newLine = newLine ?? string.Empty;
+
+            if (oldLine.Length == newLine.Length)
+            {
+                for (int i = 0; i < oldLine.Length; i++)
+                {
+                    if (oldLine[i] != newLine[i])
+                    {
+                        charChangedList.Add(new CharacterChangeType
+                            {ChangeType = CharChangedType.Modified, Length = 1, LineIndex = line, Position = i});
+                    }
+                }
+
+                return new KeyValuePair<string, string>(oldLine, newLine);
+            }
+
+            foreach (var diffBlock in diffResult.DiffBlocks)
+            {
+                if (diffBlock.DeleteCountA == diffBlock.InsertCountB &&
+                    diffBlock.DeleteStartA == diffBlock.InsertStartB)
+                {
+                    charChangedList.Add(new CharacterChangeType
+                    {
+                        ChangeType = CharChangedType.Modified, Length = diffBlock.DeleteCountA, LineIndex = line,
+                        Position = diffBlock.DeleteStartA
+                    });
+                    continue;
+                }
+
+                if (diffBlock.DeleteCountA > 0)
+                {
+                    if (CharacterComparisonMarkAddRemove)
+                    {
+                        oldLine = oldLine.Insert(diffBlock.DeleteStartA,
+                            new string(AddedCharacterSymbol, diffBlock.DeleteCountA));
+
+                        charChangedList.Add(new CharacterChangeType
+                        {
+                            ChangeType = CharChangedType.Added, Length = diffBlock.DeleteCountA, LineIndex = line,
+                            Position = diffBlock.DeleteStartA
+                        });
+                    }
+                }
+
+                if (diffBlock.InsertCountB > 0)
+                {
+                    if (CharacterComparisonMarkAddRemove)
+                    {
+                        newLine = newLine.Insert(diffBlock.InsertStartB + 1,
+                            new string(RemovedCharacterSymbol, diffBlock.InsertCountB));
+
+                        charChangedList.Add(new CharacterChangeType
+                        {
+                            ChangeType = CharChangedType.Removed, Length = diffBlock.InsertCountB, LineIndex = line,
+                            Position = diffBlock.InsertStartB + 1
+                        });
+                    }
+                }
+            }
+            return new KeyValuePair<string, string>(oldLine, newLine);
+        }
+
         /// <summary>
         /// Compares to contents of the two texts if both are assigned in a side by side style view.
         /// </summary>
@@ -969,21 +1166,46 @@ namespace ScintillaDiff
                 scintillaOne.Text = string.Empty;
                 scintillaTwo.Text = string.Empty;
 
+                scintillaOne.ClearAll();
+                scintillaTwo.ClearAll();
+
                 // clear the two StringBuilder instance contents..
                 builderLeft.Clear();
                 builderRight.Clear();
-                 
+
+                // initialize a new instance of the Differ class..
+                var differ = new Differ();
+
                 // create a diff for a side by side text comparison..
-                var diffBuilder = new SideBySideDiffBuilder(new Differ());
+                var diffBuilder = new SideBySideDiffBuilder(differ);
 
                 // compare the two texts..
                 var diff = diffBuilder.BuildDiffModel(TextLeft, TextRight);
+                List<CharacterChangeType> changedCharacters =
+                    new List<CharacterChangeType>();
 
                 // output the diff data to the left and to the right side Scintilla controls;
                 // first the rows so the style can be appended afterwards..
                 for (int i = 0; i < diff.OldText.Lines.Count; i++)
                 {
-                    AppendRow(diff.OldText.Lines[i].Text, diff.NewText.Lines[i].Text);
+                    if (CharacterComparison)
+                    {
+                        var diffResult = Differ.Instance.CreateCharacterDiffs(diff.NewText.Lines[i].Text ?? string.Empty,
+                            diff.OldText.Lines[i].Text ?? string.Empty, false, false);
+
+                        var span = SpanLeftRightChars(diffResult, i,
+                            diff.OldText.Lines[i].Text, diff.NewText.Lines[i].Text, ref changedCharacters);
+                        AppendRow(span.Key, span.Value);
+                    }
+                    else // no character comparison..
+                    {
+                        AppendRow(diff.OldText.Lines[i].Text, diff.NewText.Lines[i].Text);
+                    }
+                }
+
+                if (CharacterComparison)
+                {
+                    diff = diffBuilder.BuildDiffModel(builderLeft.ToString(), builderRight.ToString());
                 }
 
                 scintillaOne.Text = builderLeft.ToString();
@@ -992,16 +1214,17 @@ namespace ScintillaDiff
                 // clear the list of difference locations..
                 DiffLocations.Clear();
 
-				if (IsEntireLineHighligted)
+				if (IsEntireLineHighlighted)
 				{
 					for (int i = 0; i < diff.OldText.Lines.Count; i++)
 					{
 						if (diff.OldText.Lines[i].Type == ChangeType.Modified || diff.NewText.Lines[i].Type == ChangeType.Modified)
 						{
 							SetLineBackgroundColor(i, ChangeType.Modified);
+
 							HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
 							HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
-						}
+                        }
 						else if (diff.OldText.Lines[i].Type == ChangeType.Deleted)
 						{
 							SetLineBackgroundColor(i, ChangeType.Deleted);
@@ -1039,8 +1262,9 @@ namespace ScintillaDiff
 								SaveLineLocation(i);
 								AppendRowDiffMarker(i, false);
 								MarkLineWithColor(i, DiffColorChangeBackground, true);
+
 								HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
-								break;
+                                break;
 						}
 
 						switch (diff.NewText.Lines[i].Type)
@@ -1063,11 +1287,15 @@ namespace ScintillaDiff
 								SaveLineLocation(i);
 								AppendRowDiffMarker(i, true);
 								MarkLineWithColor(i, DiffColorChangeBackground, false);
+
 								HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
-								break;
+                                break;
 						}
 					}
 				}
+
+                MarkWithBackgroundColor(changedCharacters, diffColorCharAdded,
+                    diffColorCharDeleted);
 
                 // reset the index of the next difference..
                 diffIndex = -1;
@@ -1104,6 +1332,52 @@ namespace ScintillaDiff
                 diffPiece.Text.Length, color);
         }
 
+        private void ClearStylesArea(Scintilla scintilla, int line, int position, int length)
+        {
+            for (int i = markColorCharacterChanged; i <= markColorIndexModifiedBackground; i++)
+            {
+                Highlight.ClearStyleArea(scintilla, line, position, length,
+                    i);
+            }
+        }
+
+        private void MarkWithBackgroundColor(List<CharacterChangeType> changedCharacters,
+            Color colorAdd, Color colorDeleted)
+        {
+            foreach (var changedCharacter in changedCharacters)
+            {
+                int startOne = scintillaOne.Lines[changedCharacter.LineIndex].Position + changedCharacter.Position;
+                int startTwo = scintillaTwo.Lines[changedCharacter.LineIndex].Position + changedCharacter.Position;
+
+                ClearStylesArea(scintillaOne, changedCharacter.LineIndex, changedCharacter.Position, changedCharacter.Length);
+                ClearStylesArea(scintillaTwo, changedCharacter.LineIndex, changedCharacter.Position, changedCharacter.Length);
+                
+                switch (changedCharacter.ChangeType)
+                {
+                    case CharChangedType.Modified:
+                        Highlight.HighlightRange(scintillaOne, markColorCharacterChanged, startOne, changedCharacter.Length,
+                            colorDeleted);
+                        Highlight.HighlightRange(scintillaTwo, markColorCharacterChanged, startTwo, changedCharacter.Length,
+                            colorAdd);
+                        break;
+
+                    case CharChangedType.Added:
+                        Highlight.HighlightRange(scintillaOne, markColorCharacterAdded, startOne, changedCharacter.Length,
+                            colorDeleted);
+                        Highlight.HighlightRange(scintillaTwo, markColorCharacterRemoved, startTwo, changedCharacter.Length,
+                            colorAdd);
+                        break;
+
+                    case CharChangedType.Removed:
+                        Highlight.HighlightRange(scintillaOne, markColorCharacterRemoved, startOne, changedCharacter.Length,
+                            colorDeleted);
+                        Highlight.HighlightRange(scintillaTwo, markColorCharacterAdded, startTwo, changedCharacter.Length,
+                            colorAdd);
+                        break;
+                }
+            }
+        }
+
         /// <summary>
         /// Marks a line of a <see cref="Scintilla"/> control with a given <paramref name="color"/>.
         /// </summary>
@@ -1125,7 +1399,7 @@ namespace ScintillaDiff
         }
 
 		/// <summary>
-		/// Sets the background colour for the entire line of a <see cref="Scintilla"/> control.
+		/// Sets the background color for the entire line of a <see cref="Scintilla"/> control.
 		/// </summary>
 		/// <param name="lineIndex">The index of the line to highlight.</param>
 		/// <param name="changeType">The type of change that was made to the line, indicating which color to set the background.</param>
@@ -1197,8 +1471,7 @@ namespace ScintillaDiff
                 scintillaTwo.ScrollCaret();
             }
 
-            if (backwards && lineIndex == -1 || 
-                !backwards && lineIndex + 1 >= DiffLocations.Count)
+            if (!backwards && lineIndex + 1 >= DiffLocations.Count)
             {
                 return false;
             }
@@ -1226,6 +1499,7 @@ namespace ScintillaDiff
         /// <summary>
         /// Swaps the texts to compare.
         /// </summary>
+        // ReSharper disable once UnusedMember.Global
         public void SwapDiff()
         {
             string temp = textLeft;

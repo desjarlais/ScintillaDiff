@@ -24,14 +24,36 @@ SOFTWARE.
 */
 #endregion
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+namespace ScintillaDiff.UtilityClasses
+{
+    /// <summary>
+    /// A class for a generic modifiable pair.
+    /// </summary>
+    /// <typeparam name="TKey">The type of the key.</typeparam>
+    /// <typeparam name="TValue">The type of the value.</typeparam>
+    public class Pair<TKey, TValue>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Pair{TKey, TValue}"/> class.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        public Pair(TKey key, TValue value)
+        {
+            Key = key;
+            Value = value;
+        }
 
-// Setting ComVisible to false makes the types in this assembly not visible
-// to COM components.  If you need to access a type in this assembly from
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+        /// <summary>
+        /// Gets or sets the key.
+        /// </summary>
+        /// <value>The key.</value>
+        public TKey Key { get; set; }
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ccbe5980-dcfc-42aa-a1f1-2de58fd63c7f")]
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
+        public TValue Value { get; set; }
+    }
+}

@@ -33,13 +33,13 @@
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenFileOne = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenFileTwo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.odAnyFile = new System.Windows.Forms.OpenFileDialog();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.btJumpBackwards = new System.Windows.Forms.ToolStripButton();
             this.btJumpForwards = new System.Windows.Forms.ToolStripButton();
             this.btSingleView = new System.Windows.Forms.ToolStripButton();
             this.scintillaDiffControl = new ScintillaDiff.ScintillaDiffControl();
-            this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.msMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,13 @@
             this.mnuOpenFileTwo.Size = new System.Drawing.Size(145, 22);
             this.mnuOpenFileTwo.Text = "Open file two";
             this.mnuOpenFileTwo.Click += new System.EventHandler(this.MnuOpenFile_Click);
+            // 
+            // mnuAbout
+            // 
+            this.mnuAbout.Name = "mnuAbout";
+            this.mnuAbout.Size = new System.Drawing.Size(52, 20);
+            this.mnuAbout.Text = "About";
+            this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
             // odAnyFile
             // 
@@ -127,11 +134,16 @@
             // 
             // scintillaDiffControl
             // 
+            this.scintillaDiffControl.AddedCharacterSymbol = '+';
             this.scintillaDiffControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.scintillaDiffControl.DiffColorAdded = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(255)))), ((int)(((byte)(135)))));
+            this.scintillaDiffControl.CharacterComparison = true;
+            this.scintillaDiffControl.CharacterComparisonMarkAddRemove = true;
+            this.scintillaDiffControl.DiffColorAdded = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.scintillaDiffControl.DiffColorChangeBackground = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(140)))));
+            this.scintillaDiffControl.DiffColorCharAdded = System.Drawing.Color.Lime;
+            this.scintillaDiffControl.DiffColorCharDeleted = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
             this.scintillaDiffControl.DiffColorDeleted = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
             this.scintillaDiffControl.DiffStyle = ScintillaDiff.ScintillaDiffStyles.DiffStyle.DiffSideBySide;
             this.scintillaDiffControl.ImageRowAdded = ((System.Drawing.Bitmap)(resources.GetObject("scintillaDiffControl.ImageRowAdded")));
@@ -142,22 +154,17 @@
             this.scintillaDiffControl.ImageRowDiffScintillaIndex = 31;
             this.scintillaDiffControl.ImageRowOk = ((System.Drawing.Bitmap)(resources.GetObject("scintillaDiffControl.ImageRowOk")));
             this.scintillaDiffControl.ImageRowOkScintillaIndex = 30;
+            this.scintillaDiffControl.IsEntireLineHighlighted = false;
             this.scintillaDiffControl.Location = new System.Drawing.Point(12, 52);
             this.scintillaDiffControl.MarkColorIndexModifiedBackground = 31;
             this.scintillaDiffControl.MarkColorIndexRemovedOrAdded = 30;
             this.scintillaDiffControl.Name = "scintillaDiffControl";
+            this.scintillaDiffControl.RemovedCharacterSymbol = '-';
             this.scintillaDiffControl.Size = new System.Drawing.Size(776, 386);
             this.scintillaDiffControl.TabIndex = 0;
             this.scintillaDiffControl.TextLeft = "";
             this.scintillaDiffControl.TextRight = "";
             this.scintillaDiffControl.UseRowOkSign = false;
-            // 
-            // mnuAbout
-            // 
-            this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(52, 20);
-            this.mnuAbout.Text = "About";
-            this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
             // FormMain
             // 
@@ -170,7 +177,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msMain;
             this.Name = "FormMain";
-            this.Text = "Test application for the ScintillaDiff library    © VPKSoft 2019";
+            this.Text = "Test application for the ScintillaDiff library    © VPKSoft 2020";
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();
             this.tsMain.ResumeLayout(false);
