@@ -24,6 +24,8 @@ A class library for comparing two text files with the ScintillaNET control.
 
 * [JetBrains](http://www.jetbrains.com) for their open source license(s).
 
+* [![VPKSoft](https://circleci.com/gh/VPKSoft/ScintillaDiff.svg?style=shield)](https://app.circleci.com/pipelines/github/VPKSoft/ScintillaDiff)
+
 ![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
 
 ## Screen-shots
