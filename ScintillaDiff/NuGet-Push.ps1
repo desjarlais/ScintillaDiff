@@ -29,7 +29,7 @@ $output_file = "ScintillaDiff\CryptEnvVar.exe"
 $download_url = "https://www.vpksoft.net/toolset/CryptEnvVar.exe"
 
 Write-Output "Download file:  $download_url ..."
-Remove-Item $output_file
+# No need to remove this: Remove-Item $output_file
 (New-Object System.Net.WebClient).DownloadFile($download_url, $output_file)
 Write-Output "Download done."
 
