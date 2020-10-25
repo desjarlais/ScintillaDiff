@@ -38,12 +38,12 @@ $application = "ScintillaDiff"
 $environment_cryptor = "CryptEnvVar.exe"
 
 # create the digital signature..
-$args = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_6;CERT_7;CERT_8", "-f", "C:\vpksoft.pfx", "-w", "80", "-i", "-v")
-& (-join($application, "\", $environment_cryptor)) $args
+$arguments = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;CERT_6;CERT_7;CERT_8", "-f", "C:\vpksoft.pfx", "-w", "80", "-i", "-v")
+& (-join($application, "\", $environment_cryptor)) $arguments
 
 #create nuget.config file..
-$args = @("-s", $Env:SECRET_KEY, "-e", "NUGET_CONFIG", "-f", "nuget.config", "-w", "80", "-i", "-v")
-& (-join($application, "\", $environment_cryptor)) $args
+$arguments = @("-s", $Env:SECRET_KEY, "-e", "NUGET_CONFIG", "-f", "nuget.config", "-w", "80", "-i", "-v")
+& (-join($application, "\", $environment_cryptor)) $arguments
 
 # register the certificate to the CI image..
 $certpw=ConvertTo-SecureString $Env:PFX_PASS –asplaintext –force 
@@ -60,11 +60,14 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
         # sign the NuGet packages.
 	    Write-Output (-join("Signing package: ", $file, " ..."))
 
-        $args = @("sign", $file, "-CertificatePath", "C:\vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
+        $arguments = @("sign", $file, "-CertificatePath", "C:\vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
 
-	# on the second time, something about 'Keyset does not exist'. TODO::Clean temp?
-        nuget.exe $args > null 2>&1
+	    # on the second time, something about 'Keyset does not exist'. TODO::Clean temp?
+        nuget.exe $arguments > null 2>&1
 	    Write-Output (-join("Package signed: ", $file, "."))
+
+        # After signing, clean up the temporary folder, if this helps with the multiple package signing..
+        Remove-Item -Recurse -Force (-join($Env:LocalAppData, "\Temp\*.*"))
 
         # push the NuGet packges..
         $nuget_api = "https://api.nuget.org/v3/index.json"
@@ -74,13 +77,13 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
 	    Write-Output (-join("Pushing NuGet:", $file, " ..."))
         
         # To nuget.org..
-        $args = @("push", $file, $Env:NUGET_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
-        #$args = @("push", $file, $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
-        nuget.exe $args
+        $arguments = @("push", $file, $Env:NUGET_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
+        #$arguments = @("push", $file, $Env:NUGET_TEST_APIKEY, "-Source", $nuget_api, "-SkipDuplicate")
+        nuget.exe $arguments
 
         # To GitHub packages..
-        $args = @("push", $file, $Env:NUGET_PACKAGES_API, "-Source", $nuget_packages_api, "-SkipDuplicate")
-        nuget.exe $args
+        $arguments = @("push", $file, $Env:NUGET_PACKAGES_API, "-Source", $nuget_packages_api, "-SkipDuplicate")
+        nuget.exe $arguments
 
 	    Write-Output (-join("Pushing done:", $file, "."))
     }
