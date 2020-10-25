@@ -1133,13 +1133,13 @@ namespace ScintillaDiff
                 {
                     if (CharacterComparisonMarkAddRemove)
                     {
-                        newLine = newLine.Insert(diffBlock.InsertStartB + 1,
+                        newLine = newLine.Insert(diffBlock.InsertStartB,
                             new string(RemovedCharacterSymbol, diffBlock.InsertCountB));
 
                         charChangedList.Add(new CharacterChangeType
                         {
                             ChangeType = CharChangedType.Removed, Length = diffBlock.InsertCountB, LineIndex = line,
-                            Position = diffBlock.InsertStartB + 1
+                            Position = diffBlock.InsertStartB
                         });
                     }
                 }

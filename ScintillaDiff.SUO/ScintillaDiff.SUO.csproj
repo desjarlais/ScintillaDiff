@@ -6,7 +6,7 @@
     <Product>ScintillaDiff.SUO</Product>
     <Copyright>Copyright © VPKSoft 2020</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <Description>A class library for comparing two text files with the ScintillaNET control.</Description>
     <Authors>VPKSoft</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -17,6 +17,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>wrapper winforms scintilla diff unofficial</PackageTags>
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaDiff/</PackageReleaseNotes>
+    <AssemblyVersion>1.0.9.0</AssemblyVersion>
+    <FileVersion>1.0.9.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
