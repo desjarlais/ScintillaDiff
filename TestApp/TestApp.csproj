@@ -79,6 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="VPKSoft.About" Version="1.0.0.5" />
-    <PackageReference Include="VPKSoft.VersionCheck" Version="1.0.1.4" />
+    <PackageReference Include="VPKSoft.VersionCheck" Version="1.0.2" />
   </ItemGroup>
 </Project>
