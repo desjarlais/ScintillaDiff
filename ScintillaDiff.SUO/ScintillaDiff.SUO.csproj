@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.6.3" />
-    <PackageReference Include="unofficial.ScintillaNET" Version="3.6.51" />
+    <PackageReference Include="unofficial.ScintillaNET" Version="3.6.60" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />
