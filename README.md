@@ -1,6 +1,8 @@
 # ScintillaDiff
 A class library for comparing two text files with the ScintillaNET control.
 
+[![Nuget](https://img.shields.io/nuget/v/ScintillaDiff)](https://www.nuget.org/packages/ScintillaDiff/)
+
 ### Features
 * Customizable indicator images
 * Customizable indicator colors
@@ -13,6 +15,9 @@ A class library for comparing two text files with the ScintillaNET control.
 * [ScintillaNET](https://github.com/jacobslusser/ScintillaNET)
 * [Some of my own](https://github.com/VPKSoft)
 
+## The SUO package
+The SUO stands for [unofficial.ScintillaNET](https://www.nuget.org/packages/unofficial.ScintillaNET/) dependency which is updated with the recent pull requests build from this [ScintillaNET fork](https://github.com/VPKSoft/ScintillaNET) from the original [ScintillaNET](https://github.com/jacobslusser/ScintillaNET). The fork was made to try to keep up with the changes to the code base suggested by users as the official version is getting outdated for unknown reason(s) 🙄.
+
 ## Thanks to
 * [bobhodge](https://github.com/bobhodge) For implementing horizontal scrolling sync; plus mousewheel scrolling.
 * [XJmichaelw](https://github.com/XJmichaelw) For adding IsEntireLineHighlighted attribute, which when set to true, will set the entire background of a line to a given colour corresponding to the change type for that line. And a bug fix leading to a crash when a form containing the control was minimized.
@@ -23,6 +28,8 @@ A class library for comparing two text files with the ScintillaNET control.
 * [goroggy](https://github.com/goroggy) For pointing out the need for a character diff ([#7](https://github.com/VPKSoft/ScintillaDiff/issues/7)).
 
 * [JetBrains](http://www.jetbrains.com) for their open source license(s).
+
+* [![VPKSoft](https://circleci.com/gh/VPKSoft/ScintillaDiff.svg?style=shield)](https://app.circleci.com/pipelines/github/VPKSoft/ScintillaDiff)
 
 ![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
 
