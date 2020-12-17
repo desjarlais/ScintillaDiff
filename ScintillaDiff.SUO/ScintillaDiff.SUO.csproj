@@ -6,7 +6,7 @@
     <Product>ScintillaDiff.SUO</Product>
     <Copyright>Copyright © VPKSoft 2020</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Version>1.0.10</Version>
+    <Version>1.0.11</Version>
     <Description>A class library for comparing two text files with the ScintillaNET control.</Description>
     <Authors>VPKSoft</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
