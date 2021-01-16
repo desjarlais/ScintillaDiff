@@ -6,7 +6,7 @@
     <Product>ScintillaDiff.SUO</Product>
     <Copyright>Copyright © VPKSoft 2020</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Version>1.0.13</Version>
+    <Version>1.0.14</Version>
     <Description>A class library for comparing two text files with the ScintillaNET control.</Description>
     <Authors>VPKSoft</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -17,8 +17,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>wrapper winforms scintilla diff unofficial</PackageTags>
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaDiff/</PackageReleaseNotes>
-    <AssemblyVersion>1.0.13.0</AssemblyVersion>
-    <FileVersion>1.0.13.0</FileVersion>
+    <AssemblyVersion>1.0.14.0</AssemblyVersion>
+    <FileVersion>1.0.14.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.6.3" />
-    <PackageReference Include="unofficial.ScintillaNET" Version="3.7.0" />
+    <PackageReference Include="unofficial.ScintillaNET" Version="3.8.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />
