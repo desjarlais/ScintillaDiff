@@ -71,7 +71,7 @@
     <None Include="Resources\diff.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DiffPlex" Version="1.6.3" />
+    <PackageReference Include="DiffPlex" Version="1.7.0" />
     <PackageReference Include="jacobslusser.ScintillaNET" Version="3.6.3" />
   </ItemGroup>
 </Project>
