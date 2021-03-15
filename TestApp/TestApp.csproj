@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="VPKSoft.About" Version="1.0.0.5" />
-    <PackageReference Include="VPKSoft.VersionCheck" Version="1.0.3" />
+    <PackageReference Include="VPKSoft.VersionCheck" Version="1.0.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScintillaDiff.SUO\ScintillaDiff.SUO.csproj" />
