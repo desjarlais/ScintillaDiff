@@ -75,7 +75,7 @@
     <Content Include="TestData\license_mess2.txt" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="VPKSoft.VersionCheck" Version="1.0.7" />
+    <PackageReference Include="VPKSoft.VersionCheck" Version="1.0.8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScintillaDiff.SUO\ScintillaDiff.SUO.csproj" />
