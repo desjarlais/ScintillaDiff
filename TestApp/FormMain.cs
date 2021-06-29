@@ -27,7 +27,6 @@ SOFTWARE.
 using System;
 using System.IO;
 using System.Windows.Forms;
-using VPKSoft.VersionCheck.Forms;
 using static ScintillaDiff.ScintillaDiffStyles;
 
 namespace TestApp
@@ -75,12 +74,6 @@ namespace TestApp
         {
             var button = (ToolStripButton) sender;
             scintillaDiffControl.DiffStyle = button.Checked ? DiffStyle.DiffList : DiffStyle.DiffSideBySide;
-        }
-
-        private void MnuAbout_Click(object sender, EventArgs e)
-        {
-            // ReSharper disable once ObjectCreationAsStatement
-            new FormAbout(this, "MIT", "https://raw.githubusercontent.com/VPKSoft/ScriptNotepad/master/LICENSE", "N/A");
         }
     }
 }

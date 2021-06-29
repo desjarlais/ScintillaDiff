@@ -33,7 +33,6 @@
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenFileOne = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenFileTwo = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.odAnyFile = new System.Windows.Forms.OpenFileDialog();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.btJumpBackwards = new System.Windows.Forms.ToolStripButton();
@@ -47,8 +46,7 @@
             // msMain
             // 
             this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile,
-            this.mnuAbout});
+            this.mnuFile});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
             this.msMain.Size = new System.Drawing.Size(800, 24);
@@ -67,23 +65,16 @@
             // mnuOpenFileOne
             // 
             this.mnuOpenFileOne.Name = "mnuOpenFileOne";
-            this.mnuOpenFileOne.Size = new System.Drawing.Size(145, 22);
+            this.mnuOpenFileOne.Size = new System.Drawing.Size(180, 22);
             this.mnuOpenFileOne.Text = "Open file one";
             this.mnuOpenFileOne.Click += new System.EventHandler(this.MnuOpenFile_Click);
             // 
             // mnuOpenFileTwo
             // 
             this.mnuOpenFileTwo.Name = "mnuOpenFileTwo";
-            this.mnuOpenFileTwo.Size = new System.Drawing.Size(145, 22);
+            this.mnuOpenFileTwo.Size = new System.Drawing.Size(180, 22);
             this.mnuOpenFileTwo.Text = "Open file two";
             this.mnuOpenFileTwo.Click += new System.EventHandler(this.MnuOpenFile_Click);
-            // 
-            // mnuAbout
-            // 
-            this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(52, 20);
-            this.mnuAbout.Text = "About";
-            this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
             // odAnyFile
             // 
@@ -199,7 +190,6 @@
         private System.Windows.Forms.ToolStripButton btJumpBackwards;
         private System.Windows.Forms.ToolStripButton btJumpForwards;
         private System.Windows.Forms.ToolStripButton btSingleView;
-        private System.Windows.Forms.ToolStripMenuItem mnuAbout;
     }
 }
 
