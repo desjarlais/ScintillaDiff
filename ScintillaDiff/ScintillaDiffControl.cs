@@ -980,7 +980,7 @@ namespace ScintillaDiff
             scMain.Panel2Collapsed = true;
 
             // validate that there is text to compare..
-            if (TextLeft != string.Empty && TextRight != string.Empty)
+            if (!string.IsNullOrEmpty(TextLeft)  || !string.IsNullOrEmpty(TextRight))
             {
                 // clear the two Scintilla control contents..
                 scintillaOne.Text = string.Empty;
@@ -1160,7 +1160,7 @@ namespace ScintillaDiff
             RecalculateSize();
 
             // validate that there is text to compare..
-            if (TextLeft != string.Empty && TextRight != string.Empty)
+            if (!string.IsNullOrEmpty(TextLeft)  || !string.IsNullOrEmpty(TextRight))
             {
                 // clear the two Scintilla control contents..
                 scintillaOne.Text = string.Empty;

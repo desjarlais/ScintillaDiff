@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{3AA9C755-240A-4BD4-A288-CD05648220A1}</ProjectGuid>
-    <TargetFrameworks>net40;netcoreapp3.1;net5.0-windows</TargetFrameworks>
-    <AssemblyTitle>ScintillaDiff.SUO</AssemblyTitle>
-    <Product>ScintillaDiff.SUO</Product>
+    <TargetFrameworks>netcoreapp3.1;net5.0-windows;net6-windows</TargetFrameworks>
+    <AssemblyTitle>ScintillaDiff.NET</AssemblyTitle>
+    <Product>ScintillaDiff.NET</Product>
     <Copyright>Copyright © VPKSoft 2021</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Version>1.1.1</Version>
-    <Description>A class library for comparing two text files with the ScintillaNET control.</Description>
+    <Version>1.1.2</Version>
+    <Description>A class library for comparing two text files with the Scintilla.NET control.</Description>
     <Authors>VPKSoft</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -15,10 +15,10 @@
     <PackageIcon>vpksoft_logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/VPKSoft/ScintillaDiff</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>wrapper winforms scintilla diff unofficial</PackageTags>
+    <PackageTags>wrapper winforms scintilla diff</PackageTags>
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaDiff/</PackageReleaseNotes>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
+    <AssemblyVersion>1.1.2</AssemblyVersion>
+    <FileVersion>1.1.2</FileVersion>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
@@ -38,11 +38,6 @@
     <Content Remove="C:\Users\Petteri Kautonen\.nuget\packages\unofficial.scintillanet\3.6.51\contentFiles\any\net40\SciLexer.exp" />
     <Content Remove="C:\Users\Petteri Kautonen\.nuget\packages\unofficial.scintillanet\3.6.51\contentFiles\any\net40\SciLexer.lib" />
     <Content Remove="C:\Users\Petteri Kautonen\.nuget\packages\unofficial.scintillanet\3.6.51\contentFiles\any\net40\SciLexer.pdb" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\ScintillaDiff\Enumerations\CharChangedType.cs" Link="Enumerations\CharChangedType.cs" />
@@ -66,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.7.0" />
-    <PackageReference Include="unofficial.ScintillaNET" Version="3.8.7" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />
@@ -84,5 +78,20 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <PackageReference Include="Scintilla.NET">
+      <Version>5.1.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
+    <PackageReference Include="Scintilla.NET">
+      <Version>5.1.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6-windows'">
+    <PackageReference Include="Scintilla.NET">
+      <Version>5.1.5</Version>
+    </PackageReference>
   </ItemGroup>
 </Project>

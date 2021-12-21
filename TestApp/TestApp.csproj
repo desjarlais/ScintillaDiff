@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net47</TargetFramework>
+    <TargetFramework>net6-windows</TargetFramework>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyTitle>TestApp</AssemblyTitle>
     <Company>VPKSoft</Company>
     <Product>TestApp</Product>
     <Description>A test application for the ScintillaDiff library.</Description>
-    <Copyright>Copyright © VPKSoft 2020</Copyright>
+    <Copyright>Copyright © VPKSoft 2021</Copyright>
     <AssemblyVersion>1.0.8.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -26,9 +26,6 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ScintillaNET">
-      <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Deployment" />
@@ -75,6 +72,6 @@
     <Content Include="TestData\license_mess2.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScintillaDiff.SUO\ScintillaDiff.SUO.csproj" />
+    <ProjectReference Include="..\ScintillaDiff.NET\ScintillaDiff.NET.csproj" />
   </ItemGroup>
 </Project>

@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28917.181
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScintillaDiff", "ScintillaDiff\ScintillaDiff.csproj", "{CCBE5980-DCFC-42AA-A1F1-2DE58FD63C7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScintillaDiff", "ScintillaDiff\ScintillaDiff.csproj", "{CCBE5980-DCFC-42AA-A1F1-2DE58FD63C7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{5C584842-4CE3-4323-BD3E-E73798197F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{5C584842-4CE3-4323-BD3E-E73798197F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScintillaDiff.SUO", "ScintillaDiff.SUO\ScintillaDiff.SUO.csproj", "{3AA9C755-240A-4BD4-A288-CD05648220A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScintillaDiff.NET", "ScintillaDiff.NET\ScintillaDiff.NET.csproj", "{3AA9C755-240A-4BD4-A288-CD05648220A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

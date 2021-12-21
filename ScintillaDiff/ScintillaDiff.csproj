@@ -5,10 +5,10 @@
     <Company>VPKSoft</Company>
     <Product>ScintillaDiff</Product>
     <Description>A class library for comparing two text files with the ScintillaNET control.</Description>
-    <Copyright>Copyright © 2020 VPKSoft</Copyright>
-    <Version>1.0.9</Version>
-    <AssemblyVersion>1.0.9.0</AssemblyVersion>
-    <FileVersion>1.0.9.0</FileVersion>
+    <Copyright>Copyright © 2021 VPKSoft</Copyright>
+    <Version>1.1.2</Version>
+    <AssemblyVersion>1.1.2</AssemblyVersion>
+    <FileVersion>1.1.2</FileVersion>
     <DocumentationFile>bin\$(Configuration)\ScintillaDiff.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>VPKSoft</Authors>
@@ -45,9 +45,7 @@
     <Compile Update="ScintillaDiffControl.designer.cs">
       <DependentUpon>ScintillaDiffControl.cs</DependentUpon>
     </Compile>
-    <Compile Update="ScrollSyncScintilla.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="ScrollSyncScintilla.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="ScintillaDiffControl.resx">
