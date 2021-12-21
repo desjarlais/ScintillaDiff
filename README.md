@@ -15,8 +15,8 @@ A class library for comparing two text files with the ScintillaNET control.
 * [ScintillaNET](https://github.com/jacobslusser/ScintillaNET)
 * [Some of my own](https://github.com/VPKSoft)
 
-## The SUO package
-The SUO stands for [unofficial.ScintillaNET](https://www.nuget.org/packages/unofficial.ScintillaNET/) dependency which is updated with the recent pull requests build from this [ScintillaNET fork](https://github.com/VPKSoft/ScintillaNET) from the original [ScintillaNET](https://github.com/jacobslusser/ScintillaNET). The fork was made to try to keep up with the changes to the code base suggested by users as the official version is getting outdated for unknown reason(s) 🙄.
+## The .NET package
+The package ending with .NET is depended upon the new Scintilla 5 series [Scintilla.NET](https://www.nuget.org/packages/Scintilla.NET/). The other packages Scintilla dependency is no longer being maintained even though the codebase of the dependent software may be maintained.
 
 ## Thanks to
 * [bobhodge](https://github.com/bobhodge) For implementing horizontal scrolling sync; plus mousewheel scrolling.
