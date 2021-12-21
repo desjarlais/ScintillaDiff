@@ -1,7 +1,7 @@
 # ScintillaDiff
 A class library for comparing two text files with the ScintillaNET control.
 
-[![Nuget](https://img.shields.io/nuget/v/ScintillaDiff)](https://www.nuget.org/packages/ScintillaDiff/)
+[![Nuget](https://img.shields.io/nuget/v/ScintillaDiff.NET)](https://www.nuget.org/packages/ScintillaDiff.NET/)
 
 ### Features
 * Customizable indicator images
