@@ -97,7 +97,7 @@ jobs:
 
 
     # Create the ScintillaDiff.NET app package by building and packaging the NuGet
-    - name: Create the  ScintillaDiff.NET NuGet package
+    - name: Create the ScintillaDiff.NET NuGet package
       run: msbuild $env:App_Project_Path_2 /p:Configuration=$env:Configuration
 
     - name: Decode nuget.config
