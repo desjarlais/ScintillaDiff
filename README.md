@@ -35,6 +35,7 @@ The package ending with .NET is depended upon the new Scintilla 5 series [Scinti
 
 ## Screen-shots
 _**A side-by-side diff**_
+
 ![image](https://user-images.githubusercontent.com/40712699/58415622-b230e580-8087-11e9-913e-7c95572416a5.png)
 
 **_A list diff_**
