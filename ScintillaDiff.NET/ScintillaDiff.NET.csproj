@@ -6,7 +6,7 @@
     <Product>ScintillaDiff.NET</Product>
     <Copyright>Copyright © VPKSoft 2021</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
     <Description>A class library for comparing two text files with the Scintilla.NET control.</Description>
     <Authors>VPKSoft</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -17,8 +17,6 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>wrapper winforms scintilla diff</PackageTags>
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaDiff/</PackageReleaseNotes>
-    <AssemblyVersion>1.1.2</AssemblyVersion>
-    <FileVersion>1.1.2</FileVersion>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
@@ -81,7 +79,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
     <PackageReference Include="Scintilla.NET">
-      <Version>5.1.5</Version>
+      <Version>5.1.5.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
