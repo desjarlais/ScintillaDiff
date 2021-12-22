@@ -16,7 +16,7 @@ A class library for comparing two text files with the ScintillaNET control.
 * [Some of my own](https://github.com/VPKSoft)
 
 ## The .NET package
-The package ending with .NET is depended upon the new Scintilla 5 series [Scintilla.NET](https://www.nuget.org/packages/Scintilla.NET/). The other packages Scintilla dependency is no longer being maintained even though the codebase of the dependent software may be maintained.
+The package ending with .NET is depended upon the new Scintilla 5 series [Scintilla.NET](https://www.nuget.org/packages/Scintilla.NET/) and is in active development. The other package's Scintilla dependency is no longer being maintained even though the codebase of the dependent software may be maintained.
 
 ## Thanks to
 * [bobhodge](https://github.com/bobhodge) For implementing horizontal scrolling sync; plus mousewheel scrolling.
@@ -29,7 +29,7 @@ The package ending with .NET is depended upon the new Scintilla 5 series [Scinti
 
 * [JetBrains](http://www.jetbrains.com) for their open source license(s).
 
-* [![VPKSoft](https://circleci.com/gh/VPKSoft/ScintillaDiff.svg?style=shield)](https://app.circleci.com/pipelines/github/VPKSoft/ScintillaDiff)
+* [![.NET Desktop](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml)
 
 ![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
 
