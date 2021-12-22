@@ -29,7 +29,7 @@ The package ending with .NET is depended upon the new Scintilla 5 series [Scinti
 
 * [JetBrains](http://www.jetbrains.com) for their open source license(s).
 
-* [![VPKSoft](https://circleci.com/gh/VPKSoft/ScintillaDiff.svg?style=shield)](https://app.circleci.com/pipelines/github/VPKSoft/ScintillaDiff)
+* [![.NET Desktop](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml)
 
 ![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
 
