@@ -58,7 +58,7 @@
     <EmbeddedResource Include="..\ScintillaDiff\ScintillaDiffControl.resx" Link="ScintillaDiffControl.resx" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DiffPlex" Version="1.7.0" />
+    <PackageReference Include="DiffPlex" Version="1.7.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />
