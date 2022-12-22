@@ -31,7 +31,7 @@ The package ending with .NET is depended upon the new Scintilla 5 series [Scinti
 
 * [![.NET Desktop](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml)
 
-![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
+![image](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 ## Screen-shots
 _**A side-by-side diff**_
