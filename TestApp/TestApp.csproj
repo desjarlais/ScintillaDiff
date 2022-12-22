@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6-windows</TargetFramework>
+		<TargetFramework>net7-windows</TargetFramework>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AssemblyTitle>TestApp</AssemblyTitle>
 		<Company>VPKSoft</Company>
 		<Product>TestApp</Product>
 		<Description>A test application for the ScintillaDiff library.</Description>
-		<Copyright>Copyright © VPKSoft 2021</Copyright>
+		<Copyright>Copyright © VPKSoft 2022</Copyright>
 		<AssemblyVersion>1.0.8.0</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
 		<OutputPath>bin\$(Configuration)\</OutputPath>
@@ -26,9 +26,7 @@
 		<DebugType>pdbonly</DebugType>
 	</PropertyGroup>
 	<ItemGroup>
-		<Compile Update="FormMain.cs">
-			<SubType>Form</SubType>
-		</Compile>
+		<Compile Update="FormMain.cs" />
 		<Compile Update="FormMain.Designer.cs">
 			<DependentUpon>FormMain.cs</DependentUpon>
 		</Compile>
