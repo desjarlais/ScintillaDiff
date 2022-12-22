@@ -27,9 +27,9 @@ The package ending with .NET is depended upon the new Scintilla 5 series [Scinti
 
 * [goroggy](https://github.com/goroggy) For pointing out the need for a character diff ([#7](https://github.com/VPKSoft/ScintillaDiff/issues/7)).
 
-* [JetBrains](http://www.jetbrains.com) for their open source license(s).
-
 * [![.NET Desktop](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml)
+
+* [JetBrains](http://www.jetbrains.com) for their open source license(s).
 
 ![image](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
