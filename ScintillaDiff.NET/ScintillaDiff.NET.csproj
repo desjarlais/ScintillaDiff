@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.7.1" />
-    <PackageReference Include="Scintilla.NET" Version="5.3.2.1" />
+    <PackageReference Include="Scintilla.NET" Version="5.3.2.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />
