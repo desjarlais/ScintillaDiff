@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{3AA9C755-240A-4BD4-A288-CD05648220A1}</ProjectGuid>
     <TargetFrameworks>netcoreapp3.1;net5.0-windows;net6-windows;net7-windows</TargetFrameworks>
@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.7.1" />
-    <PackageReference Include="Scintilla.NET" Version="5.3.2.7" />
+    <PackageReference Include="Scintilla.NET" Version="5.3.2.8" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enumerations\" />
