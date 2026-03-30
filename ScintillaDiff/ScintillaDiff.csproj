@@ -5,8 +5,8 @@
     <Company>VPKSoft</Company>
     <Product>ScintillaDiff</Product>
     <Description>A class library for comparing two text files with the ScintillaNET control.</Description>
-    <Copyright>Copyright © 2021 VPKSoft</Copyright>
-    <Version>1.1.2</Version>
+    <Copyright>Copyright © 2021 VPKSoft, desjarlais 2026</Copyright>
+    <Version>1.1.3</Version>
     <AssemblyVersion>1.1.3</AssemblyVersion>
     <FileVersion>1.1.3</FileVersion>
     <DocumentationFile>bin\$(Configuration)\ScintillaDiff.xml</DocumentationFile>
@@ -16,7 +16,6 @@
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaDiff/</PackageReleaseNotes>
     <PackageTags>wrapper winforms scintilla diff</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon>vpksoft_logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/VPKSoft/ScintillaDiff</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -55,10 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\minus.png" />
-    <None Include="vpksoft_logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\plus.png" />

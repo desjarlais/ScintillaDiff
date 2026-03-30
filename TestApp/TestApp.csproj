@@ -4,7 +4,7 @@
 		<TargetFramework>net8.0-windows7.0</TargetFramework>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AssemblyTitle>TestApp</AssemblyTitle>
-		<Company>VPKSoft</Company>
+		<Company>desjarlais</Company>
 		<Product>TestApp</Product>
 		<Description>A test application for the ScintillaDiff library.</Description>
 		<Copyright>Copyright © VPKSoft 2022</Copyright>
@@ -16,7 +16,8 @@
 		<PackageProjectUrl>https://github.com/VPKSoft/ScintillaDiff</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/VPKSoft/ScintillaDiff</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageIcon>vpksoft_logo.png</PackageIcon>
+		<PackageIcon>desjarlais_logo.png</PackageIcon>
+		<ApplicationIcon>desjarlais_logo.ico</ApplicationIcon>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<DebugType>full</DebugType>
@@ -51,12 +52,9 @@
 			<DependentUpon>Settings.settings</DependentUpon>
 			<DesignTimeSharedInput>True</DesignTimeSharedInput>
 		</Compile>
-		<None Include="vpksoft_logo.png">
-			<Pack>True</Pack>
-			<PackagePath></PackagePath>
-		</None>
 	</ItemGroup>
 	<ItemGroup>
+		<Content Include="desjarlais_logo.ico" />
 		<Content Include="DiffLicenses\License_1.txt" />
 		<Content Include="DiffLicenses\License_2.txt" />
 		<Content Include="TestData\license_mess1.txt" />
@@ -67,5 +65,10 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\ScintillaDiff.NET\ScintillaDiff.NET.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="desjarlais_logo.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>

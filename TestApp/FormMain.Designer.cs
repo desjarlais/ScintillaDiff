@@ -29,152 +29,150 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.msMain = new System.Windows.Forms.MenuStrip();
-            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuOpenFileOne = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuOpenFileTwo = new System.Windows.Forms.ToolStripMenuItem();
-            this.odAnyFile = new System.Windows.Forms.OpenFileDialog();
-            this.tsMain = new System.Windows.Forms.ToolStrip();
-            this.btJumpBackwards = new System.Windows.Forms.ToolStripButton();
-            this.btJumpForwards = new System.Windows.Forms.ToolStripButton();
-            this.btSingleView = new System.Windows.Forms.ToolStripButton();
-            this.scintillaDiffControl = new ScintillaDiff.ScintillaDiffControl();
-            this.msMain.SuspendLayout();
-            this.tsMain.SuspendLayout();
-            this.SuspendLayout();
+            msMain = new System.Windows.Forms.MenuStrip();
+            mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            mnuOpenFileOne = new System.Windows.Forms.ToolStripMenuItem();
+            mnuOpenFileTwo = new System.Windows.Forms.ToolStripMenuItem();
+            odAnyFile = new System.Windows.Forms.OpenFileDialog();
+            tsMain = new System.Windows.Forms.ToolStrip();
+            btJumpBackwards = new System.Windows.Forms.ToolStripButton();
+            btJumpForwards = new System.Windows.Forms.ToolStripButton();
+            btSingleView = new System.Windows.Forms.ToolStripButton();
+            scintillaDiffControl = new ScintillaDiff.ScintillaDiffControl();
+            msMain.SuspendLayout();
+            tsMain.SuspendLayout();
+            SuspendLayout();
             // 
             // msMain
             // 
-            this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile});
-            this.msMain.Location = new System.Drawing.Point(0, 0);
-            this.msMain.Name = "msMain";
-            this.msMain.Size = new System.Drawing.Size(800, 24);
-            this.msMain.TabIndex = 1;
-            this.msMain.Text = "menuStrip1";
+            msMain.ImageScalingSize = new System.Drawing.Size(24, 24);
+            msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuFile });
+            msMain.Location = new System.Drawing.Point(0, 0);
+            msMain.Name = "msMain";
+            msMain.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
+            msMain.Size = new System.Drawing.Size(1333, 37);
+            msMain.TabIndex = 1;
+            msMain.Text = "menuStrip1";
             // 
             // mnuFile
             // 
-            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuOpenFileOne,
-            this.mnuOpenFileTwo});
-            this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(37, 20);
-            this.mnuFile.Text = "File";
+            mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuOpenFileOne, mnuOpenFileTwo });
+            mnuFile.Name = "mnuFile";
+            mnuFile.Size = new System.Drawing.Size(54, 29);
+            mnuFile.Text = "File";
             // 
             // mnuOpenFileOne
             // 
-            this.mnuOpenFileOne.Name = "mnuOpenFileOne";
-            this.mnuOpenFileOne.Size = new System.Drawing.Size(180, 22);
-            this.mnuOpenFileOne.Text = "Open file one";
-            this.mnuOpenFileOne.Click += new System.EventHandler(this.MnuOpenFile_Click);
+            mnuOpenFileOne.Name = "mnuOpenFileOne";
+            mnuOpenFileOne.Size = new System.Drawing.Size(221, 34);
+            mnuOpenFileOne.Text = "Open file one";
+            mnuOpenFileOne.Click += MnuOpenFile_Click;
             // 
             // mnuOpenFileTwo
             // 
-            this.mnuOpenFileTwo.Name = "mnuOpenFileTwo";
-            this.mnuOpenFileTwo.Size = new System.Drawing.Size(180, 22);
-            this.mnuOpenFileTwo.Text = "Open file two";
-            this.mnuOpenFileTwo.Click += new System.EventHandler(this.MnuOpenFile_Click);
+            mnuOpenFileTwo.Name = "mnuOpenFileTwo";
+            mnuOpenFileTwo.Size = new System.Drawing.Size(221, 34);
+            mnuOpenFileTwo.Text = "Open file two";
+            mnuOpenFileTwo.Click += MnuOpenFile_Click;
             // 
             // odAnyFile
             // 
-            this.odAnyFile.Filter = "All files|*.*";
+            odAnyFile.Filter = "All files|*.*";
             // 
             // tsMain
             // 
-            this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btJumpBackwards,
-            this.btJumpForwards,
-            this.btSingleView});
-            this.tsMain.Location = new System.Drawing.Point(0, 24);
-            this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(800, 25);
-            this.tsMain.TabIndex = 2;
-            this.tsMain.Text = "toolStrip1";
+            tsMain.ImageScalingSize = new System.Drawing.Size(24, 24);
+            tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { btJumpBackwards, btJumpForwards, btSingleView });
+            tsMain.Location = new System.Drawing.Point(0, 37);
+            tsMain.Name = "tsMain";
+            tsMain.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            tsMain.Size = new System.Drawing.Size(1333, 34);
+            tsMain.TabIndex = 2;
+            tsMain.Text = "toolStrip1";
             // 
             // btJumpBackwards
             // 
-            this.btJumpBackwards.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btJumpBackwards.Image = ((System.Drawing.Image)(resources.GetObject("btJumpBackwards.Image")));
-            this.btJumpBackwards.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btJumpBackwards.Name = "btJumpBackwards";
-            this.btJumpBackwards.Size = new System.Drawing.Size(27, 22);
-            this.btJumpBackwards.Text = "<<";
-            this.btJumpBackwards.Click += new System.EventHandler(this.BtJumpBackwards_Click);
+            btJumpBackwards.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btJumpBackwards.Image = (System.Drawing.Image)resources.GetObject("btJumpBackwards.Image");
+            btJumpBackwards.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btJumpBackwards.Name = "btJumpBackwards";
+            btJumpBackwards.Size = new System.Drawing.Size(40, 29);
+            btJumpBackwards.Text = "<<";
+            btJumpBackwards.Click += BtJumpBackwards_Click;
             // 
             // btJumpForwards
             // 
-            this.btJumpForwards.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btJumpForwards.Image = ((System.Drawing.Image)(resources.GetObject("btJumpForwards.Image")));
-            this.btJumpForwards.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btJumpForwards.Name = "btJumpForwards";
-            this.btJumpForwards.Size = new System.Drawing.Size(27, 22);
-            this.btJumpForwards.Text = ">>";
-            this.btJumpForwards.Click += new System.EventHandler(this.BtJumpForwards_Click);
+            btJumpForwards.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btJumpForwards.Image = (System.Drawing.Image)resources.GetObject("btJumpForwards.Image");
+            btJumpForwards.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btJumpForwards.Name = "btJumpForwards";
+            btJumpForwards.Size = new System.Drawing.Size(40, 29);
+            btJumpForwards.Text = ">>";
+            btJumpForwards.Click += BtJumpForwards_Click;
             // 
             // btSingleView
             // 
-            this.btSingleView.CheckOnClick = true;
-            this.btSingleView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btSingleView.Image = ((System.Drawing.Image)(resources.GetObject("btSingleView.Image")));
-            this.btSingleView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btSingleView.Name = "btSingleView";
-            this.btSingleView.Size = new System.Drawing.Size(70, 22);
-            this.btSingleView.Text = "Single view";
-            this.btSingleView.Click += new System.EventHandler(this.BtSingleView_Click);
+            btSingleView.CheckOnClick = true;
+            btSingleView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btSingleView.Image = (System.Drawing.Image)resources.GetObject("btSingleView.Image");
+            btSingleView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btSingleView.Name = "btSingleView";
+            btSingleView.Size = new System.Drawing.Size(104, 29);
+            btSingleView.Text = "Single view";
+            btSingleView.Click += BtSingleView_Click;
             // 
             // scintillaDiffControl
             // 
-            this.scintillaDiffControl.AddedCharacterSymbol = '+';
-            this.scintillaDiffControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.scintillaDiffControl.CharacterComparison = true;
-            this.scintillaDiffControl.CharacterComparisonMarkAddRemove = true;
-            this.scintillaDiffControl.DiffColorAdded = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.scintillaDiffControl.DiffColorChangeBackground = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(140)))));
-            this.scintillaDiffControl.DiffColorCharAdded = System.Drawing.Color.Lime;
-            this.scintillaDiffControl.DiffColorCharDeleted = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
-            this.scintillaDiffControl.DiffColorDeleted = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
-            this.scintillaDiffControl.DiffStyle = ScintillaDiff.ScintillaDiffStyles.DiffStyle.DiffSideBySide;
-            this.scintillaDiffControl.ImageRowAdded = ((System.Drawing.Bitmap)(resources.GetObject("scintillaDiffControl.ImageRowAdded")));
-            this.scintillaDiffControl.ImageRowAddedScintillaIndex = 28;
-            this.scintillaDiffControl.ImageRowDeleted = ((System.Drawing.Bitmap)(resources.GetObject("scintillaDiffControl.ImageRowDeleted")));
-            this.scintillaDiffControl.ImageRowDeletedScintillaIndex = 29;
-            this.scintillaDiffControl.ImageRowDiff = ((System.Drawing.Bitmap)(resources.GetObject("scintillaDiffControl.ImageRowDiff")));
-            this.scintillaDiffControl.ImageRowDiffScintillaIndex = 31;
-            this.scintillaDiffControl.ImageRowOk = ((System.Drawing.Bitmap)(resources.GetObject("scintillaDiffControl.ImageRowOk")));
-            this.scintillaDiffControl.ImageRowOkScintillaIndex = 30;
-            this.scintillaDiffControl.IsEntireLineHighlighted = false;
-            this.scintillaDiffControl.Location = new System.Drawing.Point(12, 52);
-            this.scintillaDiffControl.MarkColorIndexModifiedBackground = 31;
-            this.scintillaDiffControl.MarkColorIndexRemovedOrAdded = 30;
-            this.scintillaDiffControl.Name = "scintillaDiffControl";
-            this.scintillaDiffControl.RemovedCharacterSymbol = '-';
-            this.scintillaDiffControl.Size = new System.Drawing.Size(776, 386);
-            this.scintillaDiffControl.TabIndex = 0;
-            this.scintillaDiffControl.TextLeft = "";
-            this.scintillaDiffControl.TextRight = "";
-            this.scintillaDiffControl.UseRowOkSign = false;
+            scintillaDiffControl.AddedCharacterSymbol = '+';
+            scintillaDiffControl.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            scintillaDiffControl.CharacterComparison = true;
+            scintillaDiffControl.CharacterComparisonMarkAddRemove = true;
+            scintillaDiffControl.DiffColorAdded = System.Drawing.Color.FromArgb(192, 255, 192);
+            scintillaDiffControl.DiffColorChangeBackground = System.Drawing.Color.FromArgb(252, 255, 140);
+            scintillaDiffControl.DiffColorCharAdded = System.Drawing.Color.Lime;
+            scintillaDiffControl.DiffColorCharDeleted = System.Drawing.Color.FromArgb(225, 125, 125);
+            scintillaDiffControl.DiffColorDeleted = System.Drawing.Color.FromArgb(255, 178, 178);
+            scintillaDiffControl.DiffStyle = ScintillaDiff.ScintillaDiffStyles.DiffStyle.DiffSideBySide;
+            scintillaDiffControl.ImageRowAdded = (System.Drawing.Bitmap)resources.GetObject("scintillaDiffControl.ImageRowAdded");
+            scintillaDiffControl.ImageRowAddedScintillaIndex = 28;
+            scintillaDiffControl.ImageRowDeleted = (System.Drawing.Bitmap)resources.GetObject("scintillaDiffControl.ImageRowDeleted");
+            scintillaDiffControl.ImageRowDeletedScintillaIndex = 29;
+            scintillaDiffControl.ImageRowDiff = (System.Drawing.Bitmap)resources.GetObject("scintillaDiffControl.ImageRowDiff");
+            scintillaDiffControl.ImageRowDiffScintillaIndex = 31;
+            scintillaDiffControl.ImageRowOk = (System.Drawing.Bitmap)resources.GetObject("scintillaDiffControl.ImageRowOk");
+            scintillaDiffControl.ImageRowOkScintillaIndex = 30;
+            scintillaDiffControl.IsEntireLineHighlighted = false;
+            scintillaDiffControl.Location = new System.Drawing.Point(20, 100);
+            scintillaDiffControl.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            scintillaDiffControl.MarkColorIndexModifiedBackground = 31;
+            scintillaDiffControl.MarkColorIndexRemovedOrAdded = 30;
+            scintillaDiffControl.Name = "scintillaDiffControl";
+            scintillaDiffControl.RemovedCharacterSymbol = '-';
+            scintillaDiffControl.Size = new System.Drawing.Size(1293, 742);
+            scintillaDiffControl.TabIndex = 0;
+            scintillaDiffControl.TextLeft = "";
+            scintillaDiffControl.TextRight = "";
+            scintillaDiffControl.UseRowOkSign = false;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tsMain);
-            this.Controls.Add(this.scintillaDiffControl);
-            this.Controls.Add(this.msMain);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.msMain;
-            this.Name = "FormMain";
-            this.Text = "Test application for the ScintillaDiff library    © VPKSoft 2020";
-            this.msMain.ResumeLayout(false);
-            this.msMain.PerformLayout();
-            this.tsMain.ResumeLayout(false);
-            this.tsMain.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1333, 865);
+            Controls.Add(tsMain);
+            Controls.Add(scintillaDiffControl);
+            Controls.Add(msMain);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = msMain;
+            Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            Name = "FormMain";
+            Text = "Test application for the ScintillaDiff library    © VPKSoft 2020";
+            msMain.ResumeLayout(false);
+            msMain.PerformLayout();
+            tsMain.ResumeLayout(false);
+            tsMain.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
