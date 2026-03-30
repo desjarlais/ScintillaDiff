@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net7-windows</TargetFramework>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AssemblyTitle>TestApp</AssemblyTitle>
 		<Company>VPKSoft</Company>
@@ -11,7 +11,7 @@
 		<AssemblyVersion>1.0.8.0</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
 		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<Version>1.0.8</Version>
+		<Version>1.0.9</Version>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/VPKSoft/ScintillaDiff</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/VPKSoft/ScintillaDiff</RepositoryUrl>
@@ -61,6 +61,9 @@
 		<Content Include="DiffLicenses\License_2.txt" />
 		<Content Include="TestData\license_mess1.txt" />
 		<Content Include="TestData\license_mess2.txt" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Scintilla5.NET" Version="6.1.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\ScintillaDiff.NET\ScintillaDiff.NET.csproj" />
