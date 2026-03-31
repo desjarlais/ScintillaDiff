@@ -2,6 +2,7 @@
 A class library for comparing two text files with the ScintillaNET control.
 
 [![Nuget](https://img.shields.io/nuget/v/ScintillaDiff.NET)](https://www.nuget.org/packages/ScintillaDiff.NET/)
+[![.NET Desktop](https://github.com/desjarlais/ScintillaDiff/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/desjarlais/ScintillaDiff/actions/workflows/dotnet-desktop.yml)
 
 ### Features
 * Customizable indicator images
@@ -26,12 +27,6 @@ The package ending with .NET is depended upon the new Scintilla 5 series [Scinti
 * [igitur](https://github.com/igitur) For pointing out the .NET Framework 4 level-drop requirement
 
 * [goroggy](https://github.com/goroggy) For pointing out the need for a character diff ([#7](https://github.com/VPKSoft/ScintillaDiff/issues/7)).
-
-* [![.NET Desktop](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/VPKSoft/ScintillaDiff/actions/workflows/dotnet-desktop.yml)
-
-* [JetBrains](http://www.jetbrains.com) for their open source license(s).
-
-![image](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 ## Screen-shots
 _**A side-by-side diff**_
