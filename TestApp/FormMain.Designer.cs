@@ -166,7 +166,7 @@
             MainMenuStrip = msMain;
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "FormMain";
-            Text = "Test application for the ScintillaDiff library    © VPKSoft 2020";
+            Text = "Test application for the ScintillaDiff library";
             msMain.ResumeLayout(false);
             msMain.PerformLayout();
             tsMain.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿MIT License
 
-Copyright(c) 2020 Petteri Kautonen
+Copyright(c) 2026 desjarlais
 
 Permission is hereby Granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
