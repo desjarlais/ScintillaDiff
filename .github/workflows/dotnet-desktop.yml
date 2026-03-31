@@ -24,6 +24,6 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore "$Env:GITHUB_WORKSPACE/ScintillaDiffer.NET.sln"
+      run: dotnet restore "$Env:GITHUB_WORKSPACE/ScintillaDiffer.sln"
     - name: Build
-      run: dotnet build --no-restore "$Env:GITHUB_WORKSPACE/ScintillaDiffer.NET.sln"
+      run: dotnet build --no-restore "$Env:GITHUB_WORKSPACE/ScintillaDiffer.sln"
