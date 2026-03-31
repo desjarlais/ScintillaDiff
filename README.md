@@ -1,7 +1,7 @@
 # ScintillaDiff
 A class library for comparing two text files with the ScintillaNET control.
 
-[![Nuget](https://img.shields.io/nuget/v/ScintillaDiff.NET)](https://www.nuget.org/packages/ScintillaDiff.NET/)
+[![Nuget](https://img.shields.io/nuget/v/ScintillaDiff5.NET)](https://www.nuget.org/packages/ScintillaDiff5.NET/)
 [![.NET Desktop](https://github.com/desjarlais/ScintillaDiff/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/desjarlais/ScintillaDiff/actions/workflows/dotnet-desktop.yml)
 
 ### Features
@@ -13,20 +13,11 @@ A class library for comparing two text files with the ScintillaNET control.
 
 ## Used libraries
 * [DiffPlex](https://github.com/mmanela/diffplex)
-* [ScintillaNET](https://github.com/jacobslusser/ScintillaNET)
+* [ScintillaNET](https://github.com/desjarlais/ScintillaNET)
 * [Some of my own](https://github.com/VPKSoft)
 
 ## The .NET package
-The package ending with .NET is depended upon the new Scintilla 5 series [Scintilla.NET](https://www.nuget.org/packages/Scintilla.NET/) and is in active development. The other package's Scintilla dependency is no longer being maintained even though the codebase of the dependent software may be maintained.
-
-## Thanks to
-* [bobhodge](https://github.com/bobhodge) For implementing horizontal scrolling sync; plus mousewheel scrolling.
-* [XJmichaelw](https://github.com/XJmichaelw) For adding IsEntireLineHighlighted attribute, which when set to true, will set the entire background of a line to a given colour corresponding to the change type for that line. And a bug fix leading to a crash when a form containing the control was minimized.
-* [avstri](https://github.com/avstri) for pointing out the speed up via a StringBuilder [#1](https://github.com/VPKSoft/ScintillaDiff/issues/1).
-
-* [igitur](https://github.com/igitur) For pointing out the .NET Framework 4 level-drop requirement
-
-* [goroggy](https://github.com/goroggy) For pointing out the need for a character diff ([#7](https://github.com/VPKSoft/ScintillaDiff/issues/7)).
+The package ending with .NET is depended upon the new Scintilla 5 series [Scintilla.NET](https://www.nuget.org/packages/Scintilla5.NET/) and is in active development. The other package's Scintilla dependency is no longer being maintained even though the codebase of the dependent software may be maintained.
 
 ## Screen-shots
 _**A side-by-side diff**_
