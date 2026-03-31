@@ -1,93 +1,29 @@
-name: .NET Desktop
+name: .Build validate
 
 on:
   push:
-    branches: [ master ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ master ]
+    branches: [ "master" ]
 
 jobs:
 
   build:
-    environment: NuGet
+
     strategy:
       matrix:
-        configuration: [Release]
+        configuration: [Debug, Release]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
-    env:
-      Solution_Name: ScintillaDiffer.sln
-      App_Project_Directory_1: ScintillaDiff
-      App_Project_Path_1: ScintillaDiff\ScintillaDiff.csproj
-
-      App_Project_Directory_2: ScintillaDiff.NET
-      App_Project_Path_2: ScintillaDiff.NET\ScintillaDiff.NET.csproj
-
-      NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
-      NUGETAPI: ${{ secrets.NUGETAPI }}      
-      GH_PACKAGES_APIKEY: ${{ secrets.GH_PACKAGES_APIKEY }}
-      PACKAGESAPI: ${{ secrets.PACKAGESAPI }}
-      NUGETCONFIG: ${{ secrets.NUGETCONFIG }}
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-
-    # Install the .NET 8 workload
-    - name: Install .NET
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 8.0.x
-
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.2
-
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
-
-    # Create the ScintillaDiff app package by building and packaging the NuGet
-    - name: Create the ScintillaDiff NuGet package
-      run: msbuild $env:App_Project_Path_1 /p:Configuration=$env:Configuration
-
-
-    # Create the ScintillaDiff.NET app package by building and packaging the NuGet
-    - name: Create the ScintillaDiff.NET NuGet package
-      run: msbuild $env:App_Project_Path_2 /p:Configuration=$env:Configuration
-
-    - name: Decode nuget.config
-      if: ${{ github.event_name != 'pull_request' }}
-      run: |
-        $nuget_config_bytes = [System.Convert]::FromBase64String("$env:NUGETCONFIG")
-        $currentDirectory = Get-Location
-        $nugetConfigFile = Join-Path -Path $currentDirectory -ChildPath "nuget.config"
-        [IO.File]::WriteAllBytes("$nugetConfigFile", $nuget_config_bytes)
-
-    - name: NuGet push
-      if: ${{ github.event_name != 'pull_request' }}
-      run: |
-        $currentDirectory = Get-Location
-        $files = Get-ChildItem $currentDirectory -r -Filter *ScintillaDiff*.nupkg # use the mask to discard possible third party packages..
-
-        Write-Output $files.Count
-
-        for ($i = 0; $i -lt $files.Count; $i++) 
-        { 
-            $file = $files[$i].FullName
-            
-            $arguments = @("push", $file, "$env:NUGET_APIKEY", "-Source", "$env:NUGETAPI", "-SkipDuplicate")
-            
-            # sign the NuGet packages.
-            Write-Output (-join("Pushing NuGet:", $file, " ..."))
-            nuget.exe $arguments
-            
-            $arguments = @("push", $file, "$env:GH_PACKAGES_APIKEY", "-Source", "$env:PACKAGESAPI", "-SkipDuplicate")
-            nuget.exe $arguments
-        }
+    - name: Restore dependencies
+      run: dotnet restore "$Env:GITHUB_WORKSPACE/ScintillaDiff.NET.sln"
+    - name: Build
+      run: dotnet build --no-restore "$Env:GITHUB_WORKSPACE/ScintillaDiff.NET.sln"
