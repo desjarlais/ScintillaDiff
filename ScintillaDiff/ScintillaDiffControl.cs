@@ -1027,33 +1027,24 @@ namespace ScintillaDiff
                 foreach (var line in diff.Lines)
                 {
 					if (IsEntireLineHighlighted)
+					{
+						switch (line.Type)
 						{
-							for (int i = 0; i < diff.OldText.Lines.Count; i++)
-							{
-								if (diff.OldText.Lines[i].Type == ChangeType.Modified || diff.NewText.Lines[i].Type == ChangeType.Modified)
-								{
-									SetLineBackgroundColor(i, ChangeType.Modified);
-									// save the line location..
-									SaveLineLocation(i);
-
-									HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
-									HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
-                                }
-								else if (diff.OldText.Lines[i].Type == ChangeType.Deleted)
-								{
-									SetLineBackgroundColor(i, ChangeType.Deleted);
-									// save the line location..
-									SaveLineLocation(i);
-									AppendRowDeletedMarker(i, left: true);
-								}
-								else if (diff.OldText.Lines[i].Type == ChangeType.Imaginary && diff.NewText.Lines[i].Type == ChangeType.Inserted)
-								{
-									SetLineBackgroundColor(i, ChangeType.Inserted);
-									// save the line location..
-									SaveLineLocation(i);
-								}
-							}
+							case ChangeType.Inserted:
+								SetLineBackgroundColor(lineIndex, ChangeType.Inserted);
+								SaveLineLocation(lineIndex);
+								break;
+							case ChangeType.Deleted:
+								SetLineBackgroundColor(lineIndex, ChangeType.Deleted);
+								SaveLineLocation(lineIndex);
+								break;
+							case ChangeType.Modified:
+								SetLineBackgroundColor(lineIndex, ChangeType.Modified);
+								SaveLineLocation(lineIndex);
+								HandleDiffSubPieces(line.SubPieces, lineIndex, false);
+								break;
 						}
+					}
 					switch (line.Type)
                     {
                         case ChangeType.Inserted:
