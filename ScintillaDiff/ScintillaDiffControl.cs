@@ -990,6 +990,9 @@ namespace ScintillaDiff
                 builderLeft.Clear();
                 builderRight.Clear();
 
+                // clear the list of difference locations..
+                DiffLocations.Clear();
+
                 // create a diff for a list style text comparison..
                 var diffBuilder = new InlineDiffBuilder(new Differ());
 
@@ -1024,8 +1027,33 @@ namespace ScintillaDiff
                 foreach (var line in diff.Lines)
                 {
 					if (IsEntireLineHighlighted)
-						SetLineBackgroundColor(lineIndex, line.Type);
+						{
+							for (int i = 0; i < diff.OldText.Lines.Count; i++)
+							{
+								if (diff.OldText.Lines[i].Type == ChangeType.Modified || diff.NewText.Lines[i].Type == ChangeType.Modified)
+								{
+									SetLineBackgroundColor(i, ChangeType.Modified);
+									// save the line location..
+									SaveLineLocation(i);
 
+									HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
+									HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
+                                }
+								else if (diff.OldText.Lines[i].Type == ChangeType.Deleted)
+								{
+									SetLineBackgroundColor(i, ChangeType.Deleted);
+									// save the line location..
+									SaveLineLocation(i);
+									AppendRowDeletedMarker(i, left: true);
+								}
+								else if (diff.OldText.Lines[i].Type == ChangeType.Imaginary && diff.NewText.Lines[i].Type == ChangeType.Inserted)
+								{
+									SetLineBackgroundColor(i, ChangeType.Inserted);
+									// save the line location..
+									SaveLineLocation(i);
+								}
+							}
+						}
 					switch (line.Type)
                     {
                         case ChangeType.Inserted:
@@ -1221,6 +1249,8 @@ namespace ScintillaDiff
 						if (diff.OldText.Lines[i].Type == ChangeType.Modified || diff.NewText.Lines[i].Type == ChangeType.Modified)
 						{
 							SetLineBackgroundColor(i, ChangeType.Modified);
+							// save the line location..
+							SaveLineLocation(i);
 
 							HandleDiffSubPieces(diff.NewText.Lines[i].SubPieces, i, false);
 							HandleDiffSubPieces(diff.OldText.Lines[i].SubPieces, i, true);
@@ -1228,11 +1258,15 @@ namespace ScintillaDiff
 						else if (diff.OldText.Lines[i].Type == ChangeType.Deleted)
 						{
 							SetLineBackgroundColor(i, ChangeType.Deleted);
+							// save the line location..
+							SaveLineLocation(i);
 							AppendRowDeletedMarker(i, left: true);
 						}
 						else if (diff.OldText.Lines[i].Type == ChangeType.Imaginary && diff.NewText.Lines[i].Type == ChangeType.Inserted)
 						{
 							SetLineBackgroundColor(i, ChangeType.Inserted);
+							// save the line location..
+							SaveLineLocation(i);
 						}
 					}
 				}
