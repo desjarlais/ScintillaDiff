@@ -68,7 +68,7 @@
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.9.0" />
     <PackageReference Include="Scintilla5.NET" Version="6.1.2" />
-    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="10.0.7" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Lexilla.dll" />
