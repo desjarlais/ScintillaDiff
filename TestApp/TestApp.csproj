@@ -61,7 +61,7 @@
 		<Content Include="TestData\license_mess2.txt" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Scintilla5.NET" Version="6.1.2" />
+	  <PackageReference Include="Scintilla5.NET" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\ScintillaDiff.NET\ScintillaDiff.NET.csproj" />
